@@ -4,6 +4,6 @@ or
 * open a command line in the folder you want to clone (can simply replace the folder url in the file explorer by "cmd")
 * write in the console 
 ```
-git clone **url**
+git clone `**url`**
 ```
 where __url__ is the url of your repository
