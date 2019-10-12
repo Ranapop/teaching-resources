@@ -7,3 +7,5 @@ https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da
 https://www.reddit.com/r/cpp_questions/comments/41mmv2/uploading_c_on_github/
 
 ## For during the lab
+
+* tutorial for cloning a repo [here](tutorials/pushing-from-cmd.md)
