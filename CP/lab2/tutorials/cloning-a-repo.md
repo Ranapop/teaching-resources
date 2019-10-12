@@ -8,4 +8,11 @@ git clone my_url
 ```
 where __my_url__ is the url of your repository
 
-[click_url](/images/click_url.png)
+![navigate](images/navigate_folder.png)
+![write_cmd](images/write_cmd.png)
+![cmd open](images/cmd open.png)
+![click_url.png](images/click_url.png)
+![clone.png](images/clone.png)
+
+
+
