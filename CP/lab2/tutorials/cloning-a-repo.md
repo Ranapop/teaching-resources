@@ -8,10 +8,24 @@ git clone my_url
 ```
 where __my_url__ is the url of your repository
 
+### Navigate to the folder
+
 ![navigate](images/navigate_folder.png)
+
+### Click in the url bar
+
 ![click_url.png](images/click_url.png)
+
+### Write 'cmd'
+
 ![write_cmd](images/write_cmd.png)
+
+### Console opens 
+
 ![cmd open](images/cmd open.png)
+
+### Write the clone command in the console
+
 ![clone.png](images/clone.png)
 
 
