@@ -8,4 +8,7 @@ https://www.reddit.com/r/cpp_questions/comments/41mmv2/uploading_c_on_github/
 
 ## For during the lab
 
-* tutorial for cloning a repo [here](tutorials/pushing-from-cmd.md)
+Tutorials
+* tutorial for cloning a repo [here](tutorials/cloning-a-repo.md)
+* tutorial for pushing from CLion [here](tutorials/pushing-from-CLion.md)
+* tutorial for pushing from the console [here](tutorials/pushing-from-cmd)
