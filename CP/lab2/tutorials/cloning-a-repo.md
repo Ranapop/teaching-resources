@@ -1,4 +1,4 @@
-You can follow the steps here
+You can follow the steps [https://help.github.com/en/articles/cloning-a-repository](here)
 or
 * take the url of your repository
 * open a command line in the folder you want to clone (can simply replace the folder url in the file explorer by "cmd")
