@@ -18,3 +18,5 @@ git commit -m "push from cmd"
 ```
 git push origin master
 ```
+
+![img.png](images/push_cmd.png)
