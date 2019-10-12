@@ -7,3 +7,5 @@ or
 git clone my_url
 ```
 where __my_url__ is the url of your repository
+
+[click_url](/images/click_url.png)
