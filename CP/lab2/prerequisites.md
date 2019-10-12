@@ -2,6 +2,7 @@
 * Have CLion installed on your computer
 * Create a new project (C executable)
 * Run the project (the default project should print "Hello world!")
+Please check the tutorial from "lab1" if this is not working
 
 # Have git installed
 * Install git from https://git-scm.com/book/en/v2/Getting-Started-Installing-Git      
