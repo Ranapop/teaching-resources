@@ -104,22 +104,24 @@ void bubbleSort(int * a, int n) {
                 int aux = a[j];
                 a[j] = a[j+1];
                 a[j+1] = aux;
-                assig += 3;
+                assig += 3; // for the swap, 3 assignments were made so we increment the number of assignments by 3
             }
-            comp += 1;
+            comp += 1; // for comparing a[j] > a[j+1] a comparison was made, so we increment the number of comparisons
         }
         printArray(a,n);
     }
 }
 ```
-Create a function for generating the best case data (generate an ordered array).
+All 3 sorting methods behave best when the array is already sorted (they do the smallest number of operations then). We want to analyze how the sorting alorithms behave in this case. We will want to generate a chart for which the x axis represents the size of the input, while the y axis represents the number of operations done on that input. 
+
+To do that for the best case, we create a function which gets the size of the input, and generates a sorted array of that size. We will call this function for each size of the input to obtain an ordered array, and then we will sort that ordered array and count the number of operations.
 
 ```c
 int * generateBestCase(int n) {
 
     int * a = (int*)malloc(n * sizeof(int));
     for(int i=0; i < n; i++) {
-        a[i]=0;
+        a[i]=i; 
     }
     return a;
 }
