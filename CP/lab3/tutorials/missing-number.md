@@ -10,6 +10,11 @@ Output
 3
 ```
 
+### Idea
+Bitwise operators can be used to solve this problem efficiently. The xor operator has the property of resulting 0 when applied to two equal numbers. For example, 7 xor 7 = 0.
+
+That means that if we apply xor to the numbers in the input, and to the numbers in interval [1,n], the xor of those will result in the missing number.
+
 ### Solution
 ```c
 #include <stdio.h>
