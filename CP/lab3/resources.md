@@ -5,4 +5,4 @@
 
 # For during the lab
 * chatbot steps [here](tutorials/chatbot-steps.md)
-* missing numbers [here](tutorials/missing-numbers.md)
+* missing number [here](tutorials/missing-number.md)
