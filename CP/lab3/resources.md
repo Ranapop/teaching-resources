@@ -5,4 +5,4 @@
 
 # For during the lab
 * chatbot steps [here](tutorials/chatbot-steps.md)
-* car-shop steps [here](tutorials/car-shop-steps.md)
+* missing numbers [here](tutorials/missing-numbers.md)
