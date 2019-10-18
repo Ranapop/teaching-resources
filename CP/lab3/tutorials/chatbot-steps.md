@@ -24,6 +24,7 @@ C: Oh hi, Marc.
 ```
 We would write something like this
 ```c
+printf("%s to you to! I am HAL, what is your first name? (one word, please)\n",userInput);
 char name[20];
 scanf("%s",name);
 printf("Oh hi, %s.\n",name);
