@@ -15,5 +15,6 @@ https://www.atlassian.com/git/tutorials/using-branches
 https://www.youtube.com/watch?v=For9VtrQx58
 https://www.atlassian.com/git/tutorials/making-a-pull-request (good explanation, though we work with GitHub, not Bitbucket)
 
-# GitExtenstions
+# Git client
 It's advised to have GitExtension installed for next laboratory. You can work from the command line, but GitExtension is a great visual tool, especiall when working with multiple branches.
+Another option would be https://git-fork.com/?fbclid=IwAR1XxwljVk0rskNhN0qtJNnNae6McqtNbygtYN0u458_C5aVYNn_Tydc9ww 
