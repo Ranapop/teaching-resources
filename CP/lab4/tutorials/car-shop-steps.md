@@ -15,7 +15,7 @@ int main() {
     gets(firstName);
     printf("Last name: ");
     gets(lastName);
-    printf("Phone number: ");
+    
     //test name
     printf("%s %s", firstName, lastName);
 
