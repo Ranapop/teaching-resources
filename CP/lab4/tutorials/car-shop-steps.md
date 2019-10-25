@@ -66,9 +66,9 @@ int main() {
     char firstName[20];
     char lastName[20];
     printf("Please input your data\n");
-    printf("First name:\n");
+    printf("---First name:\n");
     gets(firstName);
-    printf("Last name:\n");
+    printf("---Last name:\n");
     gets(lastName);
     
     //test name
