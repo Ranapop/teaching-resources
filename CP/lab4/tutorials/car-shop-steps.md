@@ -46,6 +46,9 @@ Car data:
 --winter tires (200)
 --wireless charger (50)
 Total price: 50250
+-------------
+a) Sign
+b) Go back
 ```
 
 ![1_name.png](images/car-shop/1_name.png)
