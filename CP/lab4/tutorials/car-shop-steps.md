@@ -7,8 +7,12 @@
 
 int main() {
     printf("Welcome to our car shop. Press 'q' to exit\n");
+    
     int c = getchar();
+    ungetc(c ,stdout);
+    
     while(c!=EXIT_KEY){
+        // do stuff
         c = getchar();
         ungetc(c ,stdout);
     }
