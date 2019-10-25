@@ -1,4 +1,4 @@
-Desired flow:
+# Desired flow:
 ```
 Welcome to our car shop. Press 'q' to exit.
 Please input your data.
@@ -51,6 +51,8 @@ a) Sign
 b) Go back
 ```
 
+# Reading the name
+
 ![1_name.png](images/car-shop/1_name.png)
 
 ```c
@@ -77,6 +79,7 @@ int main() {
 }
 ```
 
+# Reading personal data (no validation)
 
 ![2_personal_data.png](images/car-shop/2_personal_data.png)
 
@@ -97,6 +100,8 @@ printf("---Address\n");
 gets(address);
 ```
 
+# Choose car brand
+
 ![3_chosen_car.png](images/car-shop/3_chosen_car.png)
 
 ```c
@@ -113,6 +118,8 @@ char choice = getchar();
 int brandChoice = choice - 'a';
 printf("Chosen car is %s\n",brands[brandChoice]);
 ```
+
+# Choose car model
 
 ![4_choose_audi_model.png](images/car-shop/4_choose_audi_model.png)
 
