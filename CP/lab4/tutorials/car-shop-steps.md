@@ -1,9 +1,4 @@
 ![1_name.png](images/car-shop/1_name.png)
-![2_personal_data.png](images/car-shop/2_personal_data.png)
-![3_chosen_car.png](images/car-shop/3_chosen_car.png)
-![4_choose_audi_model.png](images/car-shop/4_choose_audi_model.png)
-
-
 
 ```c
 #include <stdio.h>
@@ -29,6 +24,9 @@ int main() {
 }
 ```
 
+
+![2_personal_data.png](images/car-shop/2_personal_data.png)
+
 ```c
 // Input personal data
 char firstName[20];
@@ -46,6 +44,8 @@ printf("---Address\n");
 gets(address);
 ```
 
+![3_chosen_car.png](images/car-shop/3_chosen_car.png)
+
 ```c
 // Choose the brand
 int carBrandIndex;
@@ -60,6 +60,8 @@ char choice = getchar();
 int brandChoice = choice - 'a';
 printf("Chosen car is %s\n",brands[brandChoice]);
 ```
+
+![4_choose_audi_model.png](images/car-shop/4_choose_audi_model.png)
 
 ```c
 // Choose the car model
