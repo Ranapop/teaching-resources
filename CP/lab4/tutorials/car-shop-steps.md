@@ -22,3 +22,20 @@ int main() {
     return 0;
 }
 ```
+
+```c
+// Input personal data
+char firstName[20];
+char lastName[20];
+char phoneNumber[10];
+char address[30];
+printf("Please input your data\n");
+printf("---First name:\n");
+gets(firstName);
+printf("---Last name:\n");
+gets(lastName);
+printf("---Phone number\n");
+gets(phoneNumber);
+printf("---Address\n");
+gets(address);
+```
