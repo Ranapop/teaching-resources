@@ -35,7 +35,7 @@ printf("Hello, world!\n");
 ```
 to the following message:
 ```c
-printf("Welcome to our car shop. Press 'ESC' to exit\n");
+printf("Hello, Car shop\n");
 ```
 Create a commit named `add welcome message` from __CLion__
 
