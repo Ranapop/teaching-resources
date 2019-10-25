@@ -39,3 +39,18 @@ gets(phoneNumber);
 printf("---Address\n");
 gets(address);
 ```
+
+```c
+// Choose the brand
+int carBrandIndex;
+char brand[10];
+char brands[][10] = {"Audi","BMW","Bentley"};
+printf("Please choose the car brand\n");
+for(int i=0;i<3;i++) {
+    putchar('a'+i);
+    printf(") %s\n",brands[i]);
+}
+char choice = getchar();
+int brandChoice = choice - 'a';
+printf("Chosen car is %s\n",brands[brandChoice]);
+```
