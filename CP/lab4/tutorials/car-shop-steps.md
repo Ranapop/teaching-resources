@@ -54,3 +54,33 @@ char choice = getchar();
 int brandChoice = choice - 'a';
 printf("Chosen car is %s\n",brands[brandChoice]);
 ```
+
+```c
+// Choose the car model
+printf("Please choose the car model for brand %s\n",brands[brandChoice]);
+switch(brandChoice) {
+    // Audi
+    case 0: {
+        char models[][10] = {"Audi A7", "Audi A8", "Audi Q2"};
+        double prices[] = {50000, 60000, 70000};
+        for(int i=0;i<3;i++) {
+            putchar('a'+i);
+            printf(") %s (%.2f)\n",models[i],prices[i]);
+        }
+        // consume new line
+        getchar();
+        choice = getchar();
+        int modelChoice = choice - 'a';
+        printf("Model chosen: %s", models[modelChoice]);
+        break;
+    }
+    case 1: {
+        printf("No models\n");
+        break;
+    }
+    case 2: {
+        printf("No models\n");
+        break;
+    }
+}
+```
