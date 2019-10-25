@@ -65,11 +65,10 @@ int main() {
     // Input personal data
     char firstName[20];
     char lastName[20];
-    int phoneNumber[10];
     printf("Please input your data\n");
-    printf("First name: ");
+    printf("First name:\n");
     gets(firstName);
-    printf("Last name: ");
+    printf("Last name:\n");
     gets(lastName);
     
     //test name
