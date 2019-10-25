@@ -1,3 +1,53 @@
+Desired flow:
+```
+Welcome to our car shop. Press 'q' to exit.
+Please input your data.
+---First Name
+>Ana
+---Last Name
+>Pop
+---Phone number
+>074c3210dd
+!Your phone number must contain only numbers
+---Phone number
+>0744321022
+---Address
+Str. Luna nr 21
+
+Please choose the car brand
+a) Audi
+b) BMW
+c) Bentley
+->a
+
+Please choose the model for brand Audi
+a) Audi A7(50000)
+a) Audi A8(60000)
+a) Audi Q2(70000)
+d) Go back
+->a
+
+Choose additional items (separated by comma)
+a) Winter tires (200)
+b) Roof box (400)
+c) Wireless charger (50)
+d) Go back
+->a,c
+
+Your contract is:
+-------------
+Customer data:
+-name: Ana Pop
+-phone number: 0744321022
+-address: Str. Luna nr 21
+Car data:
+-car model: Audi A7 (50000)
+-additional items (250)
+--winter tires (200)
+--wireless charger (50)
+Total price: 50250
+```
+
 ![1_name.png](images/car-shop/1_name.png)
 
 ```c
