@@ -376,13 +376,11 @@ while(!contractSigned){
             // consume new line
             getchar();
             choice = getchar();
-            printf("Choice is %c\n",choice);
             modelChoice = choice - 'a';
             state++;
             break;
         }
         case 3: {
-            // Choose the additional items
             // Choose the additional items
             printf("Choose additional items (separated by comma)\n");
             for(int i=0;i<3;i++) {
