@@ -10,5 +10,5 @@
 # Extra reading
 
 * why not use fflush(stdin) 
-** https://www.geeksforgeeks.org/use-fflushstdin-c/
-** https://stackoverflow.com/questions/2979209/using-fflushstdin
+  * https://www.geeksforgeeks.org/use-fflushstdin-c/
+  * https://stackoverflow.com/questions/2979209/using-fflushstdin
