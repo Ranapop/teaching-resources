@@ -6,3 +6,9 @@
 # For during the lab
 * chatbot steps [here](tutorials/chatbot-steps.md)
 * missing number [here](tutorials/missing-number.md)
+
+# Extra reading
+
+* why not use fflush(stdin) 
+** https://www.geeksforgeeks.org/use-fflushstdin-c/
+** https://stackoverflow.com/questions/2979209/using-fflushstdin
