@@ -197,6 +197,9 @@ int modelChoice = choice - 'a';
 
 
 # Chose additional items
+
+![5_additional_items.png](images/car-shop/5_additional_items.png)
+
 ```c
 //read additional items
 int chosenAdditionalItems[3];
@@ -220,4 +223,31 @@ for(int i=0;i<noAddItemsChosen;i++) {
     printf("Additional item %s chosen\n",additionalItems[chosenAdditionalItems[i]]);
 }
 ```
-![5_additional_items.png](images/car-shop/5_additional_items.png)
+
+# Displaying the contract
+
+![6_contract.png](images/car-shop/6_contract.png)
+```c
+printf("Your contract is:\n");
+printf("-------------\n");
+printf("Customer data:\n");
+printf("-name: %s %s\n", firstName, lastName);
+printf("-phone number: %s\n", phoneNumber);
+printf("-address: %s\n", address);
+printf("Car data:\n");
+printf("-car model: %s (%.2f)\n", models[brandChoice][modelChoice], prices[brandChoice][modelChoice]);
+double additionalItemsPrice = 0;
+for(int i=0;i<noAddItemsChosen;i++) {
+    additionalItemsPrice += additionalItemsPrices[chosenAdditionalItems[i]];
+}
+printf("-additional items (%.2f)\n", additionalItemsPrice);
+for(int i=0;i<noAddItemsChosen;i++) {
+    printf("-%s (%.2f)\n", additionalItems[chosenAdditionalItems[i]], additionalItemsPrices[chosenAdditionalItems[i]]);
+}
+printf("Total price: %.2f\n", prices[brandChoice][modelChoice] + additionalItemsPrice);
+printf("-------------\n");
+printf("a) Sign\n");
+```
+
+
+
