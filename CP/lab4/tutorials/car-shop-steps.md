@@ -152,6 +152,52 @@ switch(brandChoice) {
 }
 ```
 
+Expand the code to be able to choose models for all of the three brands + store the choice outside of the for statement:
+```c
+// Choose the car model
+char models[3][3][10] = {
+        {"Audi A7", "Audi A8", "Audi Q2"},
+        {"BMW 1", "BMW 2", "BMW 3"},
+        {"Bentley 1", "Bentley 2", "Bentley 3"}
+};
+double prices[3][3] = {
+        {50000, 60000, 70000},
+        {50001, 60002, 70003},
+        {150000, 160000, 170000}
+};
+printf("Please choose the car model for brand %s\n",brands[brandChoice]);
+switch(brandChoice) {
+    // Audi
+    case 0: {
+        for(int i=0;i<3;i++) {
+            putchar('a'+i);
+            printf(") %s (%.2f)\n",models[0][i], prices[0][i]);
+        }
+        break;
+    }
+    case 1: {
+        for(int i=0;i<3;i++) {
+            putchar('a'+i);
+            printf(") %s (%.2f)\n",models[1][i], prices[0][i]);
+        }
+        break;
+    }
+    case 2: {
+        for(int i=0;i<3;i++) {
+            putchar('a'+i);
+            printf(") %s (%.2f)\n",models[2][i], prices[0][i]);
+        }
+        break;
+    }
+}
+// consume new line
+getchar();
+choice = getchar();
+printf("Choice is %c\n",choice);
+int modelChoice = choice - 'a';
+```
+
+
 # Chose additional items
 ```c
 //read additional items
