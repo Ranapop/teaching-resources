@@ -151,3 +151,29 @@ switch(brandChoice) {
     }
 }
 ```
+
+# Chose additional items
+```c
+//read additional items
+int chosenAdditionalItems[3];
+// consume new line
+getchar();
+int noAddItemsChosen = 0;
+//we want to check here for '\n' to allow the user to select 0 additional items
+while ((choice = getchar())!='\n') {
+    chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+    noAddItemsChosen++;
+    //read comma
+    char comma = getchar();
+    if(comma=='\n'){
+        //after the last letter, a new line entered
+        break;
+    }
+}
+
+//test additional items
+for(int i=0;i<noAddItemsChosen;i++) {
+    printf("Additional item %s chosen\n",additionalItems[chosenAdditionalItems[i]]);
+}
+```
+![5_additional_items.png](images/car-shop/5_additional_items.png)
