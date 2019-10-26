@@ -249,5 +249,41 @@ printf("-------------\n");
 printf("a) Sign\n");
 ```
 
+# Going back
+
+Main idea: use a state variable to remember in which part of the dialog we are:
+```c
+int state =0;
+int contractSigned = 0;
+while(!contractSigned){
+    switch (state) {
+        case 0: {
+            // Input personal data
+            state++;
+            break;
+        }
+        case 1: {
+            // Choose the brand
+            state++;
+            break;
+        }
+        case 2: {
+            // Choose the car model
+            state++;
+            break;
+        }
+        case 3: {
+            // Choose the additional items
+            state++;
+            break;
+        }
+        case 4:{
+            // Display contract
+            state++;
+            break;
+        }
+    }
+}
+```
 
 
