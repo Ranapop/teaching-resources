@@ -433,4 +433,28 @@ while(!contractSigned){
     }
 }
 ```
+Add go back functionality when chosing the brand (so that the user can input the data again). Modify the first case of the main switch accordingly:
+```c
+case 1: {
+    // Choose the brand
+    printf("Please choose the car brand\n");
+    int noOfBrands = 3;
+    for(int i=0;i<noOfBrands;i++) {
+        putchar('a'+i);
+        printf(") %s\n",brands[i]);
+    }
+    printf("%c) Go back\n",'a'+noOfBrands);
+    choice = getchar();
+    if(choice == 'a'+noOfBrands) {
+        state--;
+        // consume new line
+        getchar();
+        break;
+    }
+    brandChoice = choice - 'a';
+    state++;
+    break;
+}
+```
+
 
