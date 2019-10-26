@@ -341,9 +341,8 @@ while(!contractSigned){
                 putchar('a'+i);
                 printf(") %s\n",brands[i]);
             }
-            char choice = getchar();
-            int brandChoice = choice - 'a';
-            // Choose the car model
+            choice = getchar();
+            brandChoice = choice - 'a';
             state++;
             break;
         }
@@ -378,7 +377,7 @@ while(!contractSigned){
             getchar();
             choice = getchar();
             printf("Choice is %c\n",choice);
-            int modelChoice = choice - 'a';
+            modelChoice = choice - 'a';
             state++;
             break;
         }
