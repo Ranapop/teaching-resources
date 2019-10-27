@@ -57,7 +57,7 @@ Payment amount: 28
 a) Confirm order
 b) Go back
 >a
-Order confirmed! Thank you for buying from us!
+Order confirmed! Thank you for buying from us, ranap!
 ```
 # Data
 | Food type | 
