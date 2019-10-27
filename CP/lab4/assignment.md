@@ -58,3 +58,10 @@ Payment amount: 28
 | Pizza Diavola    (23) | Mac&cheese       (21) | Chicken Salad    (22) |
 | Pizza Margherita (19) |                       | Greek Salad      (19) |
 |                       |                       | Cobb             (21) |
+
+| Drink         | 
+| ------------- |
+| Coca-cola (5) | 
+| Fanta     (5) |
+| Lipton    (5) |
+| Water     (4) |
