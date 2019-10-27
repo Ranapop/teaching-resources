@@ -1,3 +1,7 @@
+# Submission
+
+Please create a repository called `food-ordering`, add `Ranapop` as a collaborator and work on a dev branch. You can create a pull request (reviewer:`Ranapop`) after implementing a few functionalities, or after implementing everthing, put please create your final pull request by 10pm, the evening before the laboratory.
+
 # Desired flow
 
 The user can:
