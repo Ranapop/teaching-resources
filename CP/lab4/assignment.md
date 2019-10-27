@@ -82,13 +82,27 @@ Order confirmed! Thank you for buying from us, ranap!
 
 # Grading
 
-| Functionality            | Points |
-| ------------------------ | ------ |
-| Signing in               | 1 p    |
-| Selecting food type      | 1 p    |
-| Selecting speciffic food | 2 p    |
-| Selecting drink          | 1 p    |
-| Choosing cutlery         | 1 p    |
-| Adding additional info   | 1 p    |
-| Printing order           | 1 p    |
-| Going back               | 2 p    |
+For a grade of max __10__ you must cover the following functionalities:
+
+| Functionality                | Points |
+| ---------------------------- | ------ |
+| __Signing in__               | 1 p    |
+| __Selecting food type__      | 1 p    |
+| __Selecting speciffic food__ | 2 p    |
+| Selecting drink              | 1 p    |
+| Choosing cutlery             | 1 p    |
+| Adding additional info       | 1 p    |
+| __Printing order__           | 1 p    |
+| Going back                   | 2 p    |
+
+The basic functionality is highlighted in the table above. Your assignment must have at least this functionality). The non-highlighted functionalities can be applied to the basic functionality independently (for example you don't need to add the `Selecting drink` functionality in oder to add the `Choosing cutlery` functionality).
+
+For a grade of __5__ you must implement:
+| Functionality                | Points |
+| ---------------------------- | ------ |
+| Signing in                   | 1 p    |
+| Selecting food type          | 1 p    |
+| Selecting speciffic food     | 2 p    |
+| Printing order               | 1 p    |
+
+__Please be aware of the fact that the order depends on the functionality implemented (for example if you don't implement the `Choosing cutlery` functionality, the `Cutlery: no` line shouldn't be in the order.__
