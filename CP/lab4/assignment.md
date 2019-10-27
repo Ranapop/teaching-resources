@@ -98,6 +98,7 @@ For a grade of max __10__ you must cover the following functionalities:
 The basic functionality is highlighted in the table above. Your assignment must have at least this functionality). The non-highlighted functionalities can be applied to the basic functionality independently (for example you don't need to add the `Selecting drink` functionality in oder to add the `Choosing cutlery` functionality).
 
 For a grade of __5__ you must implement:
+
 | Functionality                | Points |
 | ---------------------------- | ------ |
 | Signing in                   | 1 p    |
