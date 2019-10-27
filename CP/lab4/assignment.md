@@ -46,7 +46,8 @@ Payment amount: 28
 -------------------
 ```
 # Data
-|Food type| 
-|Pizza| 
-|Pasta| 
-|Salad| 
+| Food type | 
+| --------- |
+| Pizza     | 
+| Pasta     | 
+| Salad     | 
