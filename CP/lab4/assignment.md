@@ -9,7 +9,7 @@ The user can:
 * add a comment (ENTER for no comment)
 * go back at any point
 
-This is an example of a flow: (user input with `>`)
+This is an example of a flow (user input with `>`): 
 ```
 Welcome to Food Thingies!
 Please sign in to continue!
