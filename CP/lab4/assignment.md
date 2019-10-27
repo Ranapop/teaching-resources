@@ -54,6 +54,10 @@ Cutlery: no
 Additional info: Don't burn it pls :o3
 Payment amount: 28
 -------------------
+a) Confirm order
+b) Go back
+>a
+Order confirmed! Thank you for buying from us!
 ```
 # Data
 | Food type | 
