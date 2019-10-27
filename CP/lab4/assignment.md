@@ -79,3 +79,16 @@ Order confirmed! Thank you for buying from us, ranap!
 | Fanta     (5) |
 | Lipton    (5) |
 | Water     (4) |
+
+# Grading
+
+| Functionality            | Points |
+| ------------------------ | ------ |
+| Signing in               | 1 p    |
+| Selecting food type      | 1 p    |
+| Selecting speciffic food | 2 p    |
+| Selecting drink          | 1 p    |
+| Choosing cutlery         | 1 p    |
+| Adding additional info   | 1 p    |
+| Printing order           | 1 p    |
+| Going back               | 2 p    |
