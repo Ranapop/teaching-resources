@@ -51,3 +51,10 @@ Payment amount: 28
 | Pizza     | 
 | Pasta     | 
 | Salad     | 
+
+| Pizza                 | Pasta                 | Salad                 |
+| --------------------- | --------------------- | --------------------- |
+| Pizza Carbonara  (21) | Chicken alfredo  (23) | Tuna Salad       (23) |
+| Pizza Diavola    (23) | Mac&cheese       (21) | Chicken Salad    (22) |
+| Pizza Margherita (19) |                       | Greek Salad      (19) |
+|                       |                       | Cobb             (21) |
