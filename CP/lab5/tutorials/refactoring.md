@@ -338,3 +338,100 @@ int main() {
     return 0;
 }
 ```
+
+With the function declarations:
+```c
+
+
+void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]) {
+    // Input personal data
+    printf("Please input your data\n");
+    printf("---First name:\n");
+    gets(firstName);
+    printf("---Last name:\n");
+    gets(lastName);
+    printf("---Phone number\n");
+    gets(phoneNumber);
+    printf("---Address\n");
+    gets(address);
+}
+
+char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]){
+    // Choose the brand
+    printf("Please choose the car brand\n");
+    for(int i=0;i<noOfBrands;i++) {
+        putchar('a'+i);
+        printf(") %s\n",brands[i]);
+    }
+    printf("%c) Go back\n",'a'+noOfBrands);
+    char choice = getchar();
+    // consume new line
+    getchar();
+    return choice;
+}
+
+char chooseCarModel(int noOfModels, char models[][MAX_MODEL_NAME], double prices[], char brand[]) {
+    printf("Please choose the car model for brand %s\n",brand);
+    for(int i=0;i<noOfModels;i++) {
+        putchar('a'+i);
+        printf(") %s (%.2f)\n",models[i], prices[i]);
+    }
+    printf("%c) Go back\n",'a'+noOfModels);
+    char choice = getchar();
+    // consume new line
+    getchar();
+    return choice;
+}
+
+void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME], double additionalItemsPrices[]) {
+    // Choose the additional items
+    printf("Choose additional items (separated by comma)\n");
+    for (int i = 0; i < noAdditionalItems; i++) {
+        putchar('a' + i);
+        printf(") %s (%.2f)\n", additionalItems[i], additionalItemsPrices[i]);
+    }
+    printf("%c) Go back\n", 'a' + noAdditionalItems);
+}
+
+int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice) {
+    int noAddItemsChosen = 0;
+    char choice = firstChoice;
+    while (choice !='\n') {
+
+        chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+        noAddItemsChosen++;
+        //read comma
+        char comma = getchar();
+        if(comma=='\n'){
+            //after the last letter, a new line entered
+            break;
+        }
+        choice = getchar();
+    }
+    return noAddItemsChosen;
+}
+
+void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]) {
+    printf("Customer data:\n");
+    printf("-name: %s %s\n", firstName, lastName);
+    printf("-phone number: %s\n", phoneNumber);
+    printf("-address: %s\n", address);
+}
+
+void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems[], char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
+                    double additionalItemsPrices[]) {
+    printf("Car data:\n");
+    printf("-car model: %s (%.2f)\n", model, modelPrice);
+    double additionalItemsPrice = 0;
+    for(int i=0;i<noAddItemsChosen;i++) {
+        additionalItemsPrice += additionalItemsPrices[chosenAdditionalItems[i]];
+    }
+    printf("-additional items (%.2f)\n", additionalItemsPrice);
+    if(noAddItemsChosen!=0){
+        for(int i=0;i<noAddItemsChosen;i++) {
+            printf("--%s (%.2f)\n", additionalItems[chosenAdditionalItems[i]], additionalItemsPrices[chosenAdditionalItems[i]]);
+        }
+    }
+    printf("Total price: %.2f\n", modelPrice + additionalItemsPrice);
+}
+```
