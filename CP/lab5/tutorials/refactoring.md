@@ -119,11 +119,83 @@ Then we will call it like this
 
 ![7_call_choose_model](images/refactoring-car-shop/7_call_choose_model.png)
 
-## Extracting
+## Extracting functions for handling additional items
 
 We can extract at least two functions from the additional items step:
 
 ![8_extract_additional_items](images/refactoring-car-shop/8_extract_additional_items.png)
+
+The two functions are:
+```c
+void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME], double additionalItemsPrices[]) {
+    // Choose the additional items
+    printf("Choose additional items (separated by comma)\n");
+    for (int i = 0; i < noAdditionalItems; i++) {
+        putchar('a' + i);
+        printf(") %s (%.2f)\n", additionalItems[i], additionalItemsPrices[i]);
+    }
+    printf("%c) Go back\n", 'a' + noAdditionalItems);
+}
+
+int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice) {
+    int noAddItemsChosen = 0;
+    char choice = firstChoice;
+    while (choice !='\n') {
+
+        chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+        noAddItemsChosen++;
+        //read comma
+        char comma = getchar();
+        if(comma=='\n'){
+            //after the last letter, a new line entered
+            break;
+        }
+        choice = getchar();
+    }
+    return noAddItemsChosen;
+}
+```
+
+Which can be called like:
+
+
+![9_call_additional_item](images/refactoring-car-shop/9_call_additional_item.png)
+
+To call them like that in main, they will be declared at the top with the other functions.
+
+## Extracting functions for handling the contract
+
+We can extract at least two functions when displaying the contract:
+
+![10_display_contract](images/refactoring-car-shop/10_display_contract.png)
+
+With their definition:
+
+```c
+void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]) {
+    printf("Customer data:\n");
+    printf("-name: %s %s\n", firstName, lastName);
+    printf("-phone number: %s\n", phoneNumber);
+    printf("-address: %s\n", address);
+}
+
+void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
+                    double additionalItemsPrices) {
+    printf("Car data:\n");
+    printf("-car model: %s (%.2f)\n", model, modelPrice);
+    double additionalItemsPrice = 0;
+    for(int i=0;i<noAddItemsChosen;i++) {
+        additionalItemsPrice += additionalItemsPrices[chosenAdditionalItems[i]];
+    }
+    printf("-additional items (%.2f)\n", additionalItemsPrice);
+    if(noAddItemsChosen!=0){
+        for(int i=0;i<noAddItemsChosen;i++) {
+            printf("--%s (%.2f)\n", additionalItems[chosenAdditionalItems[i]], additionalItemsPrices[chosenAdditionalItems[i]]);
+        }
+    }
+    printf("Total price: %.2f\n", modelPrice + additionalItemsPrice);
+}
+```
 
 
 
