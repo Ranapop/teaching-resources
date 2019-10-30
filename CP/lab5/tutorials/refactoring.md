@@ -179,7 +179,7 @@ void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], 
     printf("-address: %s\n", address);
 }
 
-void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
+void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems[], char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
                     double additionalItemsPrices[]) {
     printf("Car data:\n");
     printf("-car model: %s (%.2f)\n", model, modelPrice);
@@ -197,7 +197,22 @@ void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int c
 }
 ```
 
+These two functions are declared above main with the other functions:
+```c
+void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
+char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]);
+char chooseCarModel(int noOfModels, char models[][MAX_MODEL_NAME], double prices[], char brand[]);
+void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME], double additionalItemsPrices[]);
+int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice);
+void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
+void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems[], char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
+                    double additionalItemsPrices[]);
 
+```
+
+Then called like this:
+
+![11_call_display](images/refactoring-car-shop/11_call_display.png)
 
 
 
