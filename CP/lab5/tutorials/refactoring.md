@@ -1,7 +1,7 @@
 # Extracting functions
 
 ## Overview
-[Extracting inputPersonalData](## Extracting-inputPersonalData)
+[Extracting inputPersonalData](##Extracting-inputPersonalData)
 
 
 ## Extracting inputPersonalData
