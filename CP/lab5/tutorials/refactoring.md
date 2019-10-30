@@ -34,3 +34,8 @@ And we will place it here:
 
 ![3_input_data_declaration.png](images/refactoring-car-shop/3_input_data_declaration.png)
 
+We can next extract the car brand:
+
+![4_extract_car_brand](images/refactoring-car-shop/4_extract_car_brand.png)
+
+
