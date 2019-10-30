@@ -180,7 +180,7 @@ void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], 
 }
 
 void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
-                    double additionalItemsPrices) {
+                    double additionalItemsPrices[]) {
     printf("Car data:\n");
     printf("-car model: %s (%.2f)\n", model, modelPrice);
     double additionalItemsPrice = 0;
