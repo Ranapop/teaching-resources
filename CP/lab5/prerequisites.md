@@ -15,3 +15,5 @@ Pass by value/reference
 # Modular programming
 
 https://www.youtube.com/watch?v=LOwhcv7XvTA 
+https://stackoverflow.com/questions/5128664/how-to-split-a-c-program-into-multiple-files/5128719
+https://medium.com/@shrmoud/static-vs-extern-a79e36f14812
