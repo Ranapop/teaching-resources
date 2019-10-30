@@ -1,8 +1,8 @@
 # Extracting functions
 
 ## Overview
-[Extracting inputPersonalData](##Extracting-inputPersonalData)
-[Extracting chooseCarBrand](##Extracting-chooseCarBrand)
+* [Extracting inputPersonalData](##Extracting-inputPersonalData)
+* [Extracting chooseCarBrand](##Extracting-chooseCarBrand)
 
 
 
