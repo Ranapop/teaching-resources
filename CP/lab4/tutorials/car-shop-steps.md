@@ -439,7 +439,7 @@ case 1: {
     // Choose the brand
     printf("Please choose the car brand\n");
     int noOfBrands = 3;
-    for(int i=0;i<noOfBrands;i++) {
+    for(int i=0;i<noModels[brandChoice];i++) {
         putchar('a'+i);
         printf(") %s\n",brands[i]);
     }
@@ -543,7 +543,7 @@ int main() {
             case 2: {
                 // Choose the car model
                 printf("Please choose the car model for brand %s\n",brands[brandChoice]);
-                for(int i=0;i<noOfBrands;i++) {
+                for(int i=0;i<noModels[brandChoice];i++) {
                     putchar('a'+i);
                     printf(") %s (%.2f)\n",models[brandChoice][i], prices[brandChoice][i]);
                 }
