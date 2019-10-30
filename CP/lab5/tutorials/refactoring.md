@@ -1,5 +1,9 @@
 # Extracting functions
 
+## Overview
+[Extracting inputPersonalData](## Extracting inputPersonalData)
+
+
 ## Extracting inputPersonalData
 
 ![1_extract_input_personal_info.png](images/refactoring-car-shop/1_extract_input_personal_info.png)
