@@ -11,7 +11,7 @@ The user can:
 * chose drink
 * chose with/without cuttlery 
 * add a comment (ENTER for no comment)
-* go back at any point
+* go back at any point (from the order step, go back to the cutlery step)
 
 This is an example of a flow (user input with `>`): 
 ```
