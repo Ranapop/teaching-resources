@@ -121,6 +121,9 @@ Then we will call it like this
 
 ## Extracting
 
+We can extract at least two functions from the additional items step:
+
+![8_extract_additional_items](images/refactoring-car-shop/8_extract_additional_items.png)
 
 
 
