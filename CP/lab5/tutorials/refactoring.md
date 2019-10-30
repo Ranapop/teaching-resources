@@ -214,5 +214,127 @@ Then called like this:
 
 ![11_call_display](images/refactoring-car-shop/11_call_display.png)
 
+## Recap
 
+So far we have some constants definitions:
+```c
+#define MAX_BRAND_NAME 10
+#define MAX_MODEL_NAME 10
+#define MAX_ADDITIONAL_ITEM_NAME 30
+```
 
+Functions declarartions:
+```c
+void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
+char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]);
+char chooseCarModel(int noOfModels, char models[][MAX_MODEL_NAME], double prices[], char brand[]);
+void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME], double additionalItemsPrices[]);
+int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice);
+void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
+void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems[], char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
+                    double additionalItemsPrices[]);
+```
+
+And the refactored main function:
+```c
+int main() {
+    printf("Welcome to our car shop.\n");
+
+    // cars data
+    int noOfBrands = 3;
+    char brands[][MAX_BRAND_NAME] = {"Audi","BMW","Bentley"};
+    int noModels[] = {3,3,3};
+    char models[3][3][MAX_MODEL_NAME] = {
+            {"Audi A7", "Audi A8", "Audi Q2"},
+            {"BMW 1", "BMW 2", "BMW 3"},
+            {"Bentley 1", "Bentley 2", "Bentley 3"}
+    };
+    double prices[3][3] = {
+            {50000, 60000, 70000},
+            {50001, 60002, 70003},
+            {150000, 160000, 170000}
+    };
+    int noAdditionalItems = 3;
+    char additionalItems[][MAX_ADDITIONAL_ITEM_NAME] = {"Winter tires","Roof box","Wireless charger"};
+    double additionalItemsPrices[] = {200, 400, 50};
+
+    //user input
+    char firstName[20];
+    char lastName[20];
+    char phoneNumber[10];
+    char address[30];
+    int choice, brandChoice, modelChoice;
+    int noAddItemsChosen = 0;
+    int chosenAdditionalItems[3];
+
+    int state =0;
+    int contractSigned = 0;
+    while(!contractSigned){
+        switch (state) {
+            case 0: {
+                inputPersonalData(firstName, lastName, phoneNumber, address);
+                state++;
+                break;
+            }
+            case 1: {
+                choice = chooseCarBrand(noOfBrands,brands);
+                if(choice == 'a'+noOfBrands) {
+                    state--;
+                    break;
+                }
+                brandChoice = choice - 'a';
+                state++;
+                break;
+            }
+            case 2: {
+                // Choose the car model
+                choice = chooseCarModel(noModels[brandChoice], models[brandChoice], prices[brandChoice], brands[brandChoice]);
+                if(choice == 'a'+noModels[brandChoice]) {
+                    state--;
+                    break;
+                }
+                modelChoice = choice - 'a';
+                state++;
+                break;
+            }
+            case 3: {
+                printAdditionalItemsChoices(noAdditionalItems, additionalItems, additionalItemsPrices);
+
+                //we want to check here for '\n' to allow the user to select 0 additional items
+                choice = getchar();
+                if(choice == 'a'+noAdditionalItems) {
+                    state--;
+                    //consume new line
+                    getchar();
+                    break;
+                }
+                noAddItemsChosen = chooseAdditionalItems(chosenAdditionalItems, choice);
+
+                state++;
+                break;
+            }
+            case 4:{
+                // Display contract
+                printf("Your contract is:\n");
+                printf("-------------\n");
+                displayPersonalData(firstName, lastName, phoneNumber, address);
+                displayCarData(models[brandChoice][modelChoice], prices[brandChoice][modelChoice], noAddItemsChosen, chosenAdditionalItems, additionalItems,
+                                    additionalItemsPrices);
+                printf("-------------\n");
+                printf("a) Sign\n");
+                printf("b) Go back\n");
+                choice = getchar();
+                if(choice=='a') {
+                    contractSigned = 1;
+                } else {
+                    state--;
+                }
+                // consume new line
+                getchar();
+                break;
+            }
+        }
+    }
+    return 0;
+}
+```
