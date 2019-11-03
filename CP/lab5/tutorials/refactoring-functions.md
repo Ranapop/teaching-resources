@@ -62,9 +62,7 @@ void displayBrandOptions(int noOfBrands, char brands[][10]) {
 }
 ```
 
-![5_call_choose_car_brand](images/refactoring-car-shop/5_call_choose_car_brand.png)
-
-We define it below the other function, thus having:
+We declare it below the other function, thus having:
 ```c
 #include <stdio.h>
 
