@@ -49,7 +49,7 @@ And we will place it here:
 
 We can extract displaying the brand options:
 
-![4_1_extract_brand_options](images/refactoring-car-shop/4_1_extract_brand_options)
+![4_1_extract_brand_options](images/refactoring-car-shop/4_1_extract_brand_options.png)
 
 ```c
 void displayBrandOptions(int noOfBrands, char brands[][10]) {
