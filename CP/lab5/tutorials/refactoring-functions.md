@@ -2,8 +2,7 @@
 
 ## Overview
 * [Extracting inputPersonalData](#Extracting-inputPersonalData)
-* [Extracting chooseCarBrand](#Extracting-chooseCarBrand)
-* [Defining some constants](#Defining-some-constants)
+* [Extracting displayBrandOptions](#Extracting-displayBrandOptions)
 * [Extracting chooseCarModel](#Extracting-chooseCarModel)
 * [Extracting functions for handling additional items](#Extracting-functions-for-handling-additional-items)
 * [Extracting chooseCarModel](#Extracting-functions-for-handling-the-contract)
