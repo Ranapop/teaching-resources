@@ -3,8 +3,8 @@
 ## Overview
 * [Extracting inputPersonalData](#Extracting-inputPersonalData)
 * [Extracting displayBrandOptions](#Extracting-displayBrandOptions)
-* [Extracting displayBrandOptions](#Extracting-displayModelOptions)
-* [Extracting chooseCarModel](#Extracting-chooseCarModel)
+* [Extracting displayModelOptions](#Extracting-displayModelOptions)
+* [Extracting getChoiceIndex](#Extracting-getChoiceIndex)
 * [Extracting functions for handling additional items](#Extracting-functions-for-handling-additional-items)
 * [Extracting chooseCarModel](#Extracting-functions-for-handling-the-contract)
 * [Recap](#Recap)
@@ -49,7 +49,7 @@ And we will place it here:
 
 We can extract displaying the brand options:
 
-![4_1_extract_brand_options](images/refactoring-car-shop/4_1_extract_brand_options)
+![4_1_extract_brand_options](images/refactoring-car-shop/4_1_extract_brand_options.png)
 
 ```c
 void displayBrandOptions(int noOfBrands, char brands[][10]) {
@@ -187,45 +187,36 @@ Then we call the function like this:
 
 ![7_call_choice](images/refactoring-car-shop/7_call_choice.png)
 
-
-## Extracting chooseCarModel
-
-We will extract this code:
-
-![6_extract_car_model](images/refactoring-car-shop/6_extract_car_model.png)
-
-Into this function:
-
-```c
-char chooseCarModel(int noOfModels, char models[][MAX_MODEL_NAME], double prices[], char brand[]){
-    printf("Please choose the car model for brand %s\n",brand);
-    for(int i=0;i<noOfModels;i++) {
-        putchar('a'+i);
-        printf(") %s (%.2f)\n",models[i], prices[i]);
-    }
-    printf("%c) Go back\n",'a'+noOfModels);
-    char choice = getchar();
-    // consume new line
-    getchar();
-    return choice;
-}
-```
-
-Put the declaration with the other declarations:
-```c
-void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
-char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]);
-char chooseCarModel(int noOfModels, char models[][MAX_MODEL_NAME], double prices[], char brand[]);
-```
-Then we will call it like this
-
-![7_call_choose_model](images/refactoring-car-shop/7_call_choose_model.png)
-
 ## Extracting functions for handling additional items
 
 We can extract at least two functions from the additional items step:
 
 ![8_extract_additional_items](images/refactoring-car-shop/8_extract_additional_items.png)
+
+Again we will have to get rid of the break statement:
+```c
+choice = getchar();
+if(choice == 'a'+noAdditionalItems) {
+    state--;
+    //consume new line
+    getchar();
+} else {
+    noAddItemsChosen = 0;
+    while (choice !='\n') {
+
+        chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+        noAddItemsChosen++;
+        //read comma
+        char comma = getchar();
+        if(comma=='\n'){
+            //after the last letter, a new line entered
+            break;
+        }
+        choice = getchar();
+    }
+    state++;
+}
+```
 
 The two functions are:
 ```c
@@ -239,20 +230,30 @@ void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][M
     printf("%c) Go back\n", 'a' + noAdditionalItems);
 }
 
-int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice) {
-    int noAddItemsChosen = 0;
-    char choice = firstChoice;
-    while (choice !='\n') {
+int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], int * state) {
 
-        chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
-        noAddItemsChosen++;
-        //read comma
-        char comma = getchar();
-        if(comma=='\n'){
-            //after the last letter, a new line entered
-            break;
+    int noAddItemsChosen = 0;
+
+    char choice = getchar();
+    if(choice == 'a'+noAdditionalItems) {
+        (*state)--;
+        //consume new line
+        getchar();
+    } else {
+        noAddItemsChosen = 0;
+        while (choice !='\n') {
+
+            chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+            noAddItemsChosen++;
+            //read comma
+            char comma = getchar();
+            if(comma=='\n'){
+                //after the last letter, a new line entered
+                break;
+            }
+            choice = getchar();
         }
-        choice = getchar();
+        (*state)++;
     }
     return noAddItemsChosen;
 }
