@@ -3,6 +3,7 @@
 ## Overview
 * [Extracting inputPersonalData](#Extracting-inputPersonalData)
 * [Extracting displayBrandOptions](#Extracting-displayBrandOptions)
+* [Extracting displayBrandOptions](#Extracting-displayModelOptions)
 * [Extracting chooseCarModel](#Extracting-chooseCarModel)
 * [Extracting functions for handling additional items](#Extracting-functions-for-handling-additional-items)
 * [Extracting chooseCarModel](#Extracting-functions-for-handling-the-contract)
@@ -103,6 +104,89 @@ And in the declaration of brands in main:
 
 char brands[][MAX_BRAND_NAME] = {"Audi","BMW","Bentley"};
 ```
+
+## Extracting displayModelOptions
+
+We can do the same thing for displaying the model options. We can extract this part of the code from the `case 2` of the switch statement:
+```c
+ // Choose the car model
+printf("Please choose the car model for brand %s\n",brands[brandChoice]);
+for(int i=0;i<noModels[brandChoice];i++) {
+    putchar('a'+i);
+    printf(") %s (%.2f)\n",models[brandChoice][i], prices[brandChoice][i]);
+}
+printf("%c) Go back\n",'a'+noModels[brandChoice]);
+```
+Move it into a function (where we don't send the whole data, just the data at index `brandChoice`):
+```c
+void displayModelOptions(int noOfModels, char brand[], char models[][MAX_MODEL_NAME], double prices[]) {
+    // Choose the car model
+    printf("Please choose the car model for brand %s\n",brand);
+    for(int i=0;i<noOfModels;i++) {
+        putchar('a'+i);
+        printf(") %s (%.2f)\n",models[i], prices[i]);
+    }
+    printf("%c) Go back\n",'a'+noOfModels);
+}
+```
+We move the header of the function above main:
+```c
+void displayModelOptions(int noOfModels, char brand[], char models[][MAX_MODEL_NAME], double prices[])
+```
+Then call it inside the switch statement:
+
+And now our code looks like this:
+
+![5_call_display_brand_model_options](images/refactoring-car-shop/5_call_display_brand_model_options.png)
+
+## Extracting getChoiceIndex
+
+Now we can see that reading the choice and converting it to an index is quite repetitive:
+
+![6_extract_get_choice](images/refactoring-car-shop/6_extract_get_choice.png)
+
+We can therefore extract that code in a function. Before doing that we must get rid of that break statement. We can avoid it by using __if else__:
+```c
+choice = getchar();
+// consume new line
+getchar();
+if(choice == 'a'+noOfBrands) {
+    state--;
+} else {
+    brandChoice = choice - 'a';
+    state++;
+}
+break;
+```
+Then, we can move the code to a function. Be aware that in order to modify the state variable when sending it as a parameter, we will have to use __pass by reference__. Our function will be:
+```c
+int getChoiceIndex(int noOfChoices, int *state) {
+    int choiceIndex;
+    char choice = getchar();
+    // consume new line
+    getchar();
+    if(choice == 'a'+noOfChoices) {
+        (*state)--; // *state-- <=> *(state--)
+    } else {
+        choiceIndex = choice - 'a';
+        (*state)++;
+    }
+    return choiceIndex;
+}
+```
+
+We declare the function at the top with the other functions, thus having:
+```c
+void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
+void displayBrandOptions(int noOfBrands, char brands[][MAX_BRAND_NAME]);
+void displayModelOptions(int noOfModels, char brand[], char models[][MAX_MODEL_NAME], double prices[]);
+int getChoiceIndex(int noOfChoices, int *state);
+```
+
+Then we call the function like this:
+
+![7_call_choice](images/refactoring-car-shop/7_call_choice.png)
+
 
 ## Extracting chooseCarModel
 
