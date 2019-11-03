@@ -497,13 +497,6 @@ int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], in
     return noAddItemsChosen;
 }
 
-void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]) {
-    printf("Customer data:\n");
-    printf("-name: %s %s\n", firstName, lastName);
-    printf("-phone number: %s\n", phoneNumber);
-    printf("-address: %s\n", address);
-}
-
 void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems[], char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
                     double additionalItemsPrices[]) {
     printf("Car data:\n");
