@@ -3,7 +3,7 @@
 ## Overview
 * [Extracting inputPersonalData](#Extracting-inputPersonalData)
 * [Extracting displayBrandOptions](#Extracting-displayBrandOptions)
-* [Extracting displayBrandOptions](#Extracting-displayModelOptions)
+* [Extracting displayModelOptions](#Extracting-displayModelOptions)
 * [Extracting chooseCarModel](#Extracting-chooseCarModel)
 * [Extracting functions for handling additional items](#Extracting-functions-for-handling-additional-items)
 * [Extracting chooseCarModel](#Extracting-functions-for-handling-the-contract)
