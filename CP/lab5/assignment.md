@@ -9,3 +9,5 @@ You have to fulfill the same functionality requirements (so please correct any b
 
 * extract functionality in functions, each function being smaller than `15` lines of code (except the main function)
 * break the project in at least 5 source files (except for `main.c` each `.c` file should have a `.h` file associtated, so have at least 3 `.c` files and at least 2 `.h` files), where each module needs to have functions with a common topic
+* define constants for maximum sizes
+* give suggestive names to your variables, functions and files
