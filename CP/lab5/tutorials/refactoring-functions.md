@@ -329,10 +329,11 @@ So far we have some constants definitions:
 Functions declarartions:
 ```c
 void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
-char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]);
-char chooseCarModel(int noOfModels, char models[][MAX_MODEL_NAME], double prices[], char brand[]);
+void displayBrandOptions(int noOfBrands, char brands[][MAX_BRAND_NAME]);
+void displayModelOptions(int noOfModels, char brand[], char models[][MAX_MODEL_NAME], double prices[]);
+int getChoiceIndex(int noOfChoices, int *state);
 void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME], double additionalItemsPrices[]);
-int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice);
+int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], int * state);
 void displayPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
 void displayCarData(char model[], double modelPrice, int noAddItemsChosen, int chosenAdditionalItems[], char additionalItems[][MAX_ADDITIONAL_ITEM_NAME],
                     double additionalItemsPrices[]);
@@ -345,9 +346,9 @@ int main() {
 
     // cars data
     int noOfBrands = 3;
-    char brands[][MAX_BRAND_NAME] = {"Audi","BMW","Bentley"};
+    char brands[][10] = {"Audi","BMW","Bentley"};
     int noModels[] = {3,3,3};
-    char models[3][3][MAX_MODEL_NAME] = {
+    char models[3][3][10] = {
             {"Audi A7", "Audi A8", "Audi Q2"},
             {"BMW 1", "BMW 2", "BMW 3"},
             {"Bentley 1", "Bentley 2", "Bentley 3"}
@@ -380,40 +381,19 @@ int main() {
                 break;
             }
             case 1: {
-                choice = chooseCarBrand(noOfBrands,brands);
-                if(choice == 'a'+noOfBrands) {
-                    state--;
-                    break;
-                }
-                brandChoice = choice - 'a';
-                state++;
+                // Choose the brand
+                displayBrandOptions(noOfBrands,brands);
+                modelChoice = getChoiceIndex(noModels[brandChoice], &state);
                 break;
             }
             case 2: {
-                // Choose the car model
-                choice = chooseCarModel(noModels[brandChoice], models[brandChoice], prices[brandChoice], brands[brandChoice]);
-                if(choice == 'a'+noModels[brandChoice]) {
-                    state--;
-                    break;
-                }
-                modelChoice = choice - 'a';
-                state++;
+                displayModelOptions(noModels[brandChoice], brands[brandChoice], models[brandChoice], prices[brandChoice]);
+                modelChoice = getChoiceIndex(noModels[brandChoice], &state);
                 break;
             }
             case 3: {
                 printAdditionalItemsChoices(noAdditionalItems, additionalItems, additionalItemsPrices);
-
-                //we want to check here for '\n' to allow the user to select 0 additional items
-                choice = getchar();
-                if(choice == 'a'+noAdditionalItems) {
-                    state--;
-                    //consume new line
-                    getchar();
-                    break;
-                }
-                noAddItemsChosen = chooseAdditionalItems(chosenAdditionalItems, choice);
-
-                state++;
+                noAddItemsChosen = chooseAdditionalItems(noAdditionalItems, chosenAdditionalItems, &state);
                 break;
             }
             case 4:{
@@ -421,8 +401,8 @@ int main() {
                 printf("Your contract is:\n");
                 printf("-------------\n");
                 displayPersonalData(firstName, lastName, phoneNumber, address);
-                displayCarData(models[brandChoice][modelChoice], prices[brandChoice][modelChoice], noAddItemsChosen, chosenAdditionalItems, additionalItems,
-                                    additionalItemsPrices);
+                displayCarData(models[brandChoice][modelChoice], prices[brandChoice][modelChoice],
+                        noAddItemsChosen, chosenAdditionalItems, additionalItems, additionalItemsPrices);
                 printf("-------------\n");
                 printf("a) Sign\n");
                 printf("b) Go back\n");
@@ -442,24 +422,10 @@ int main() {
 }
 ```
 
-With the function declarations:
+With the function definitions:
 ```c
 
-
-void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]) {
-    // Input personal data
-    printf("Please input your data\n");
-    printf("---First name:\n");
-    gets(firstName);
-    printf("---Last name:\n");
-    gets(lastName);
-    printf("---Phone number\n");
-    gets(phoneNumber);
-    printf("---Address\n");
-    gets(address);
-}
-
-char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]){
+void displayBrandOptions(int noOfBrands, char brands[][MAX_BRAND_NAME]) {
     // Choose the brand
     printf("Please choose the car brand\n");
     for(int i=0;i<noOfBrands;i++) {
@@ -467,23 +433,30 @@ char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]){
         printf(") %s\n",brands[i]);
     }
     printf("%c) Go back\n",'a'+noOfBrands);
-    char choice = getchar();
-    // consume new line
-    getchar();
-    return choice;
 }
 
-char chooseCarModel(int noOfModels, char models[][MAX_MODEL_NAME], double prices[], char brand[]) {
+void displayModelOptions(int noOfModels, char brand[], char models[][MAX_MODEL_NAME], double prices[]) {
+    // Choose the car model
     printf("Please choose the car model for brand %s\n",brand);
     for(int i=0;i<noOfModels;i++) {
         putchar('a'+i);
         printf(") %s (%.2f)\n",models[i], prices[i]);
     }
     printf("%c) Go back\n",'a'+noOfModels);
+}
+
+int getChoiceIndex(int noOfChoices, int *state) {
+    int choiceIndex;
     char choice = getchar();
     // consume new line
     getchar();
-    return choice;
+    if(choice == 'a'+noOfChoices) {
+        (*state)--; // *state-- <=> *(state--)
+    } else {
+        choiceIndex = choice - 'a';
+        (*state)++;
+    }
+    return choiceIndex;
 }
 
 void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME], double additionalItemsPrices[]) {
@@ -496,20 +469,30 @@ void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][M
     printf("%c) Go back\n", 'a' + noAdditionalItems);
 }
 
-int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice) {
-    int noAddItemsChosen = 0;
-    char choice = firstChoice;
-    while (choice !='\n') {
+int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], int * state) {
 
-        chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
-        noAddItemsChosen++;
-        //read comma
-        char comma = getchar();
-        if(comma=='\n'){
-            //after the last letter, a new line entered
-            break;
+    int noAddItemsChosen = 0;
+
+    char choice = getchar();
+    if(choice == 'a'+noAdditionalItems) {
+        (*state)--;
+        //consume new line
+        getchar();
+    } else {
+        noAddItemsChosen = 0;
+        while (choice !='\n') {
+
+            chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+            noAddItemsChosen++;
+            //read comma
+            char comma = getchar();
+            if(comma=='\n'){
+                //after the last letter, a new line entered
+                break;
+            }
+            choice = getchar();
         }
-        choice = getchar();
+        (*state)++;
     }
     return noAddItemsChosen;
 }
