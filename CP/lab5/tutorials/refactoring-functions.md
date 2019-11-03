@@ -45,14 +45,14 @@ And we will place it here:
 
 ![3_input_data_declaration.png](images/refactoring-car-shop/3_input_data_declaration.png)
 
-## Extracting chooseCarBrand
+## Extracting displayBrandOptions
 
-We can next extract reading the car brand:
+We can extract displaying the brand options:
 
-![4_extract_car_brand](images/refactoring-car-shop/4_extract_car_brand.png)
+![4_1_extract_brand_options](images/refactoring-car-shop/4_1_extract_brand_options)
 
 ```c
-char chooseCarBrand(int noOfBrands, char brands[][10]){
+void displayBrandOptions(int noOfBrands, char brands[][10]) {
     // Choose the brand
     printf("Please choose the car brand\n");
     for(int i=0;i<noOfBrands;i++) {
@@ -60,10 +60,6 @@ char chooseCarBrand(int noOfBrands, char brands[][10]){
         printf(") %s\n",brands[i]);
     }
     printf("%c) Go back\n",'a'+noOfBrands);
-    char choice = getchar();
-    // consume new line
-    getchar();
-    return choice;
 }
 ```
 
@@ -74,10 +70,28 @@ We define it below the other function, thus having:
 #include <stdio.h>
 
 void inputPersonalData(char firstName[], char lastName[], char phoneNumber[], char address[]);
-char chooseCarBrand(int noOfBrands, char brands[][10]);
+void displayBrandOptions(int noOfBrands, char brands[][10]);
 ```
 
-## Defining some constants
+The second case of the switch statement becomes:
+```c
+case 1: {
+    // Choose the brand
+    displayBrandOptions(noOfBrands,brands);
+    choice = getchar();
+    // consume new line
+    getchar();
+    if(choice == 'a'+noOfBrands) {
+        state--;
+        break;
+    }
+    brandChoice = choice - 'a';
+    state++;
+    break;
+}
+```
+
+### Defining some constants
 
 We can see that we had to pass `10` as max size of brand name in this function. And we also did it when defining the brands array of string in the main function. It's hard to keep track like that. And if we wanted to say the brand names should be as much as 20 characters, we would have to change that in a few places. So let's define the max brand name length as a constant:
 ```c
@@ -85,9 +99,7 @@ We can see that we had to pass `10` as max size of brand name in this function. 
 ```
 Let's use it in the function header:
 ```c
-char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME]);
-...
-char chooseCarBrand(int noOfBrands, char brands[][MAX_BRAND_NAME])
+void displayBrandOptions(int noOfBrands, char brands[][MAX_BRAND_NAME]);
 ```
 And in the declaration of brands in main:
 ```c
