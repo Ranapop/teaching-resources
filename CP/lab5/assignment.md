@@ -1,3 +1,8 @@
+# Submission
+You will continue working on the `food-ordering` repo. Make your changes on a development branch, and create a pull request with `ranapop` as a reviewer when you want your changes to be merged. Do not push on the master and do not merge the changes yourself.
+
+# Requirements
+
 For this assignment, you will work upon the previous assignment.
 
 You have to fulfill the same functionality requirements (so please correct any bugs you might have), but you must also fullfill the following code requirements:
