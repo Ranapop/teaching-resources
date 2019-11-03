@@ -193,6 +193,31 @@ We can extract at least two functions from the additional items step:
 
 ![8_extract_additional_items](images/refactoring-car-shop/8_extract_additional_items.png)
 
+Again we will have to get rid of the break statement:
+```c
+choice = getchar();
+if(choice == 'a'+noAdditionalItems) {
+    state--;
+    //consume new line
+    getchar();
+} else {
+    noAddItemsChosen = 0;
+    while (choice !='\n') {
+
+        chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+        noAddItemsChosen++;
+        //read comma
+        char comma = getchar();
+        if(comma=='\n'){
+            //after the last letter, a new line entered
+            break;
+        }
+        choice = getchar();
+    }
+    state++;
+}
+```
+
 The two functions are:
 ```c
 void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][MAX_ADDITIONAL_ITEM_NAME], double additionalItemsPrices[]) {
@@ -205,20 +230,30 @@ void printAdditionalItemsChoices(int noAdditionalItems, char additionalItems[][M
     printf("%c) Go back\n", 'a' + noAdditionalItems);
 }
 
-int chooseAdditionalItems(int chosenAdditionalItems[], char firstChoice) {
-    int noAddItemsChosen = 0;
-    char choice = firstChoice;
-    while (choice !='\n') {
+int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], int * state) {
 
-        chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
-        noAddItemsChosen++;
-        //read comma
-        char comma = getchar();
-        if(comma=='\n'){
-            //after the last letter, a new line entered
-            break;
+    int noAddItemsChosen = 0;
+
+    char choice = getchar();
+    if(choice == 'a'+noAdditionalItems) {
+        (*state)--;
+        //consume new line
+        getchar();
+    } else {
+        noAddItemsChosen = 0;
+        while (choice !='\n') {
+
+            chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+            noAddItemsChosen++;
+            //read comma
+            char comma = getchar();
+            if(comma=='\n'){
+                //after the last letter, a new line entered
+                break;
+            }
+            choice = getchar();
         }
-        choice = getchar();
+        (*state)++;
     }
     return noAddItemsChosen;
 }
