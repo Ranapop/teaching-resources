@@ -38,3 +38,18 @@ void readModel(char * model) {
     model[i] = '\0';
 }
 ```
+
+# Read models and prices
+
+# Display data
+```c
+for(int i=0;i<noOfBrands;i++) {
+    // display brand
+    printf("%s: ", brands[i]);
+    for(int j=0;j<noOfModels[i];j++) {
+        printf("(%s, %.2lf) ",models[i][j],prices[i][j]);
+    }
+    printf("\n");
+}
+```
+
