@@ -77,3 +77,19 @@ for(int i=0;i<noOfBrands;i++) {
 }
 ```
 
+# Free memory
+
+```c
+for(int i=0;i<noOfBrands;i++) {
+    for(int j=0;j<noOfModels;j++) {
+        free(models[i][j]);
+    }
+    free(models[i]);
+    free(prices[i]);
+    free(brands[i]);
+}
+free(models);
+free(prices);
+free(brands);
+free(noOfModels);
+```
