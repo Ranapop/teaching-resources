@@ -24,3 +24,17 @@ for(int i=0;i<noOfBrands;i++){
     printf("Brand %s\n",brands[i]);
 }
 ```
+
+# Funcrtion for reading model
+```c
+void readModel(char * model) {
+    char c = getchar();
+    int i=0;
+    while(c!=',') {
+        model[i] = c;
+        c = getchar();
+        i++;
+    }
+    model[i] = '\0';
+}
+```
