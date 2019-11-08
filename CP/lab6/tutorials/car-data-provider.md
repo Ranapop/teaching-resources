@@ -121,11 +121,6 @@ int main() {
         scanf("%s",brands[i]);
     }
 
-    // testing purpose; todo: delete at next step
-    for(int i=0;i<noOfBrands;i++){
-        printf("Brand %s\n",brands[i]);
-    }
-
     int * noOfModels = (int*)malloc(noOfBrands * sizeof(int));
     char *** models = (char***)malloc(noOfBrands * sizeof(char**));
     double ** prices = (double**)malloc(noOfBrands* sizeof(double*));
