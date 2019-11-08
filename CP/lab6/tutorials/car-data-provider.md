@@ -67,6 +67,7 @@ for(int i=0; i<noOfBrands; i++) {
 
 # Display data
 ```c
+printf("The data is:\n");
 for(int i=0;i<noOfBrands;i++) {
     // display brand
     printf("%s: ", brands[i]);
