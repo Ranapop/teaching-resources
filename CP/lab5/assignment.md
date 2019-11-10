@@ -15,11 +15,10 @@ You have to fulfill the same functionality requirements (so please correct any b
 
 # Grading
 
-Please note the maximum grade is 11.
 
 | Requirement                  | Points |
 | ---------------------------- | ------ |
-| No global variables          | 1 p    |
+| No global variables          | 0.5 p  |
 | Constants defined            | 0.5 p  |
 | Main function ~ 60 lines     | 2 p    |
 | Functions under 15 lines     | 2 p    |
@@ -27,4 +26,4 @@ Please note the maximum grade is 11.
 | Only needed data sent (func) | 0.5 p  |
 | At least 5 source files      | 2 p    |
 | Source files well divided    | 1 p    |
-| Good naming (var,func,files) | 1 p    |
+| Good naming (var,func,files) | 0.5 p  |
