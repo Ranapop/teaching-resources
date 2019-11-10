@@ -82,7 +82,7 @@ Code requirements:
 * no static allocation
 * foods stored in an array of strings (char**)
 * speciffic foods stored in an array of array of strings (char***)
-* speciffic foods prices stored in an array of array of doubles (doou mauble**)
+* speciffic foods prices stored in an array of array of doubles (double**)
 * drinks stored in array of strings (char**)
 * drinks prices stored in array of doubles (double*)
 * all allocated memory should be deallocated
