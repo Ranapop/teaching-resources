@@ -12,3 +12,19 @@ You have to fulfill the same functionality requirements (so please correct any b
 * define constants for maximum sizes
 * give suggestive names to your variables, functions and files
 * no global variables
+
+# Grading
+
+Please note the maximum grade is 11.
+
+| Requirement                  | Points |
+| ---------------------------- | ------ |
+| No global variables          | 1 p    |
+| Constants defined            | 0.5 p  |
+| Main function ~ 60 lines     | 2 p    |
+| Functions under 15 lines     | 2 p    |
+| Functions well extracted     | 1 p    |
+| Only needed data sent (func) | 0.5 p  |
+| At least 5 source files      | 2 p    |
+| Source files well divided    | 1 p    |
+| Good naming (var,func,files) | 1 p    |
