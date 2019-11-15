@@ -185,7 +185,7 @@ int getChoiceIndex(int noOfChoices, int *state);
 
 Then we call the function like this:
 
-![7_call_choice](images/refactoring-car-shop/7_call_choice.png)
+![7_call_choice_new](images/refactoring-car-shop/7_call_choice_new.png)
 
 ## Extracting functions for handling additional items
 
