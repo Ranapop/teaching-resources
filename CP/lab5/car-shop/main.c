@@ -56,7 +56,7 @@ int main() {
             case 1: {
                 // Choose the brand
                 displayBrandOptions(noOfBrands,brands);
-                brandChoice = getChoiceIndex(noModels[brandChoice], &state);
+                brandChoice = getChoiceIndex(nOfBrands, &state);
                 break;
             }
             case 2: {
