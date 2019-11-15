@@ -1,7 +1,7 @@
 
 # Validate phone number 
 
-# Validate that it contains exactly 10 digits
+## Validate that it contains exactly 10 digits
 
 ```c
 void readPhoneNumber(char phoneNumber[]) {
@@ -19,7 +19,7 @@ void readPhoneNumber(char phoneNumber[]) {
 }
 ```
 
-# Validate that it contains only digits
+## Validate that it contains only digits
 
 Create a function that verifies a string only contains digits:
 
@@ -54,6 +54,35 @@ void readPhoneNumber(char phoneNumber[]) {
             printf("!!!The phone number should contain exactly %d digits! Please input it again!\n",PHONE_NUMBER_LEN);
         }
 
+    }
+}
+```
+
+# Validate email address
+
+```c
+int endsWith(char s[], char substr[]) {
+    char * ret = strstr(s,substr);
+    if(ret == NULL) {
+        return 0;
+    }
+    return strlen(ret) == strlen(substr);
+}
+```
+
+```c
+void readEmailAddress(char address[]) {
+
+    printf("---Email address\n");
+    int isValid = 0;
+    while(!isValid) {
+        gets(address);
+        // verify the address ends in @yahoo.com or @gmail.com
+        if (endsWith(address,"@yahoo.com") || endsWith(address,"@gmail.com")) {
+            isValid = 1;
+        } else {
+            printf("!!!Invalid email address\n");
+        }
     }
 }
 ```
