@@ -58,6 +58,57 @@ void readPhoneNumber(char phoneNumber[]) {
 }
 ```
 
+## Refactor
+
+```c
+int validateLength(char phoneNumber[]) {
+    if(strlen(phoneNumber) == 10) {
+        return 1;
+    } else {
+        printf("!!!The phone number should contain exactly 10 digits! Please input it again!\n");
+        return 0;
+    }
+}
+
+int validateDigits(char phoneNumber[]) {
+    if (containsOnlyDigits(phoneNumber)) {
+        return 1;
+    } else {
+        printf("!!!The phone number should contain only digits!\n");
+    }
+    return 0;
+}
+```
+
+and call them:
+
+```c
+isOk = validateLength(phoneNumber) && validateDigits(phoneNumber);
+```
+
+Using function pointers:
+```c
+int isLength(char s[]) {
+    return strlen(s) == 10;
+}
+
+
+int validate(int (*fullfillsCondition)(char []), char phoneNumber[], char message[]) {
+    if (fullfillsCondition(phoneNumber)) {
+        return 1;
+    } else {
+        printf(message);
+    }
+    return 0;
+}
+```
+
+and call them:
+
+```c
+isOk = validate(&isLength, phoneNumber, VALIDATE_LEN_MESSAGE) && validate(&containsOnlyDigits,phoneNumber, VALIDATE_DIGITS_MESSAGE);
+```
+
 # Validate email address
 
 ```c
