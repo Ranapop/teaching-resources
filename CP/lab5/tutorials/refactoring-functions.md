@@ -383,7 +383,7 @@ int main() {
             case 1: {
                 // Choose the brand
                 displayBrandOptions(noOfBrands,brands);
-                modelChoice = getChoiceIndex(noModels[brandChoice], &state);
+                brandChoice = getChoiceIndex(noOfBrands, &state);
                 break;
             }
             case 2: {
