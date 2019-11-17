@@ -1,3 +1,4 @@
+# Functionality requirements
 
 You will add signing up functionality to the `food-ordering` application. First, the user will have to choose between siging in or signing up.
 
@@ -83,3 +84,18 @@ The password must be at least 7 chars long
 >asd.1234
 Please choose the food you feel like eating today:
 ```
+
+# Grading (5p)
+
+| Functionality                                  | Points |
+| ---------------------------------------------- |        |
+| Choose between sign in or sign up              | 0.5 p  |
+| Sign in with predefined user                   | 0.5 p  |
+| Sign in with correct user & password           | 0.5 p  |
+| Sign in with non-existing user                 | 0.5 p  |
+| Sign in with incorrect password                | 0.5 p  |
+| Sign up with non-existing & valid password     | 0.5 p  |
+| Sign up with existing user                     | 0.5 p  |
+| Sign up with existing user && invalid password | 1.5 p  |
+| Going back from food choosing                  | 0.5 p  |
+
