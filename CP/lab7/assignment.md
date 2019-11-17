@@ -53,6 +53,6 @@ See assignment [here](extra-assignments/save-data-to-file.md)
 
 See assignment [here](extra-assignments/load-data-from-file.md)
 
-# Extra assignment 3: Sign up (3p bonus)
+# Extra assignment 3: Sign up (5p bonus)
 
 See assignment [here](extra-assignments/sign-up.md)
