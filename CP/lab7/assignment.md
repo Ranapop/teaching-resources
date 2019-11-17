@@ -13,6 +13,7 @@ Please load the data
 >Salad: (Tuna Salad - 23.00) (Chicken Salad - 22.00) (Greek Salad - 19.00) (Cobb - 21.00)
 >4:
 >(Coca-cola - 5), (Fanta -5), (Lipton - 5), (Water - 4)
+Welcome to Food Thingies!
 ```
 The user will have to input:
 * on the first line the number of food types (noOfFoodTypes)
