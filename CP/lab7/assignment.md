@@ -25,6 +25,12 @@ The user will have to input:
 
 For parsing the input, please read one line at the time and use appropiate strings functions to extract the relavant information. Also, please notice patterns in the input and where functions can be extracted.
 
+Please define the "Please load the data" as a constant:
+
+| Message key  | Value                   |
+| ------------ | ----------------------- |
+| LOAD_DATA    | "Please load the data"  |
+
 | Functionality                | Points |
 | ---------------------------- | ------ |
 | Parse food data              | 2.5 p  |
@@ -32,7 +38,8 @@ For parsing the input, please read one line at the time and use appropiate strin
 | Free memory food data        | 1 p    |
 | Parse drinks data            | 2 p    |
 | Allocate memory drinks data  | 1.5 p  |
-| Free memory drinks data      | 1 p    |
+| Free memory drinks data      | 0.5 p  |
+| Define message               | 0.5 p  |
 
 You may be panalized for:
 * bugs 
