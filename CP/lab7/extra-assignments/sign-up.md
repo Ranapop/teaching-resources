@@ -27,20 +27,20 @@ The rules for the password to be valid are:
 
 For error messages, please look at the constants you will have to define (messages table bellow):
 
-| Message key                 | Value                                                                     |
-| --------------------------- | ------------------------------------------------------------------------- |
-| ERROR_PASSWORD_LONG         | "The password must be at least 7 chars long"                              |
-| ERROR_PASSWORD_NOT_USERNAME | "The password must not contain the username"                              |
-| ERROR_PASSWORD_SPECIAL_CHAR | "The password must contain one of the following characters: `.`,`_`,`!`"  |
-| ERROR_PASSWORD_DIGITS       | "The password must contain digits"                                        |
-| SIGN_IN_UP                  | "Do you want to sign in or sign up?"                                      |
-| SIGN_IN                     | "Sign in"                                                                 |
-| SIGN_UP                     | "Sign up"                                                                 |
-| SIGNING_IN                  | "Signing in!"                                                             |
-| SIGNING_UP                  | "Signing up!"                                                             |
-| USER_NOT_FOUND              | "Username doesn't exist"                                                  |
-| DUPLICATE_USER              | "Please choose another username!"                                         |
-| INCORRECT_PASSWORD          | "Incorrect password"                                                      |
+| Message key                 | Value                                                                       |
+| --------------------------- | --------------------------------------------------------------------------- |
+| ERROR_PASSWORD_LONG         | "The password must be at least 7 chars long"                                |
+| ERROR_PASSWORD_NOT_USERNAME | "The password must not contain the username"                                |
+| ERROR_PASSWORD_SPECIAL_CHAR | "The password must contain one of the following characters: {'.','\_','!'}" |
+| ERROR_PASSWORD_DIGITS       | "The password must contain digits"                                          |
+| SIGN_IN_UP                  | "Do you want to sign in or sign up?"                                        |
+| SIGN_IN                     | "Sign in"                                                                   |
+| SIGN_UP                     | "Sign up"                                                                   |
+| SIGNING_IN                  | "Signing in!"                                                               |
+| SIGNING_UP                  | "Signing up!"                                                               |
+| USER_NOT_FOUND              | "Username doesn't exist"                                                    |
+| DUPLICATE_USER              | "Please choose another username!"                                           |
+| INCORRECT_PASSWORD          | "Incorrect password"                                                        |
 
 A few examples follow:
 
