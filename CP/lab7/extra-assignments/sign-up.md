@@ -3,7 +3,7 @@ You will add signing up functionality to the `food-ordering` application. First,
 
 The required functionality can be visualized in the diagram below:
 
-//TODO: put image here
+![sign_up_diagram](sign_up_diagram.png)
 
 If the user chooses to sign in, he will have to provide an existing username and associated password. If he:
 * provides an existing username with the correct password, he will get to the food types choosing
