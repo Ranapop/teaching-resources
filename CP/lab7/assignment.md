@@ -49,7 +49,7 @@ You may be panalized for:
 
 See assignment [here](extra-assignments/save-data-to-file.md)
 
-# Extra assignmet 2: Load data from file (1p bonus)
+# Extra assignmet 2: Load data from file (1.5p bonus)
 
 See assignment [here](extra-assignments/load-data-from-file.md)
 
