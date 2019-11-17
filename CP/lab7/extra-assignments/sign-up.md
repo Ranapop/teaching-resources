@@ -88,7 +88,7 @@ Please choose the food you feel like eating today:
 # Grading (5p)
 
 | Functionality                                  | Points |
-| ---------------------------------------------- |        |
+| ---------------------------------------------- | ------ |
 | Choose between sign in or sign up              | 0.5 p  |
 | Sign in with predefined user                   | 0.5 p  |
 | Sign in with correct user & password           | 0.5 p  |
