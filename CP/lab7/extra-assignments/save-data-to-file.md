@@ -13,3 +13,12 @@ Salad: (Tuna Salad - 23.00) (Chicken Salad - 22.00) (Greek Salad - 19.00) (Cobb 
 4:
 (Coca-cola - 5), (Fanta -5), (Lipton - 5), (Water - 4)
 ```
+
+# Grading
+
+| Functionality                | Points |
+| ---------------------------- | ------ |
+| Open file                    | 0.2 p  |
+| Save food data               | 0.5 p  |
+| Save drinks data             | 0.2 p  |
+| Close file                   | 0.1 p  |
