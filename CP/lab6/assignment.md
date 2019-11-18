@@ -72,11 +72,13 @@ Functionalities:
 | Creating food-data-provider repo       | 1 p    |
 | Add Ranapop as collaborator&reviewer   | 1 p    |
 | Read and store foods no & food types   | 1 p    |
-| Read and store speciffic foods nos     | 1 p    |
-| Read and store speciffic foods         | 2 p    |
-| Read and store speciffic foods prices  | 2 p    |
+| Read and store speciffic foods nos     | 0.5 p  |
+| Read and store speciffic foods         | 1 p    |
+| Read and store speciffic foods prices  | 1 p    |
 | Read and store drinks                  | 1 p    |
 | Display data                           | 1 p    |
+| Free speciffic foood memory            | 1.5 p  |
+| Free drinks memory                     | 1 p    |
 
 Code requirements:
 * no static allocation
