@@ -8,9 +8,9 @@ The flow will be modified to first load the data. The message `Please load the d
 ```
 Please load the data
 >3:
->Pizza: (Pizza Carbonara - 21.00) (Pizza Diavola - 23.00) (Pizza Margherita - 19.00)
->Pasta: (Chicken alfredo - 23.00) (Mac&cheese - 21.00)
->Salad: (Tuna Salad - 23.00) (Chicken Salad - 22.00) (Greek Salad - 19.00) (Cobb - 21.00)
+>Pizza 3: (Pizza Carbonara - 21.00) (Pizza Diavola - 23.00) (Pizza Margherita - 19.00)
+>Pasta 2: (Chicken alfredo - 23.00) (Mac&cheese - 21.00)
+>Salad 4: (Tuna Salad - 23.00) (Chicken Salad - 22.00) (Greek Salad - 19.00) (Cobb - 21.00)
 >4:
 >(Coca cola - 5), (Fanta - 5), (Lipton - 5), (Water - 4)
 Welcome to Food Thingies!
@@ -20,6 +20,8 @@ The user will have to input:
 * on the next noOfFoodTypes lines the user inputs the food type, ":" and the speciffic foods with prices for that food type
 * the number of drinks (noOfDrinks)
 * on the last line, the drinks with their prices
+
+You may consider that food types do not contain spaces.
 
 !!! Please note that the user doesn't have to go back from signing in to this step.
 
