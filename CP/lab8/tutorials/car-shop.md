@@ -43,6 +43,7 @@ void readModels() {
 }
 ```
 
+In main() - at the begining:
 ```c
 // load data
 // read no of brands
