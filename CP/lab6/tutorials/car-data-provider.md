@@ -1,4 +1,31 @@
 
+# Behaviour
+
+```
+Please input number of brands
+>3
+Please input brands (separated by space)
+>Audi BMW Dacia
+Please input no of models for brand Audi
+>2
+Please input models&prices: each line model,price
+>Audi a8, 130000
+>Audi a7, 120000
+Please input no of models for brand BMW
+>1
+Please input models&prices: each line model,price
+>BMW m390, 150000
+Please input no of models for brand Dacia
+>2
+Please input models&prices: each line model,price
+>Dacia 1300, 1
+>Dacia Duster, 122000
+The data is:
+Audi: (Audi a8, 130000) (Audi a7, 120000)
+BMW: (BMW m390, 150000)
+Dacia: (Dacia 1300, 1) (Dacia Duster, 122000)
+```
+
 # Read number of brands
 
 ```c
