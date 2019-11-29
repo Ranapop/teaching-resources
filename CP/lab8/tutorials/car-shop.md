@@ -42,3 +42,16 @@ void readModels() {
     }
 }
 ```
+
+```c
+// load data
+// read no of brands
+int noOfBrands = 3;
+scanf("%d",&noOfBrands);
+getchar();
+// read model with no of models
+char testName[20];
+int testNo;
+readBrand(testName,&testNo);
+readModels();
+```
