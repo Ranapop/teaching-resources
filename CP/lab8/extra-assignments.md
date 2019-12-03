@@ -11,10 +11,13 @@ For encryption algorithms, you can look here: https://crypto.interactive-maths.c
 
 You should store on the first line the encryption/decreption key, then on the second line the number of users, then on each line the username with its password (think about how you could modify the number of users in the file without rewriting all the content after the number of users - maybe involving `fseek`).
 
-# Grading (5p)
+# Grading (3p)
 
 | Functionality                                                  | Points |
 | -------------------------------------------------------------- | ------ |
 | Store the no of users and the users in a file                  | 1 p    |
 | Rewrite the no of users without rewriting all data afterwards  | 1 p    |
 | Encrypt passwords on save, decrypt passwords on load           | 1 p    |
+
+# Due data
+14.01.2019
