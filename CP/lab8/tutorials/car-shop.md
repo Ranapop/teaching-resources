@@ -1,6 +1,8 @@
+# Overview
 In this tutorial you will add the functionality of loading car data in the `car-shop` application from the console. The flow will be:
 * the data is loaded from the console
 * the user can buy the car (the options are those loaded from the console)
+
 
 The input format for loading is as follows:
 * on the first line the number of brands (noOfBrands)
@@ -8,6 +10,7 @@ The input format for loading is as follows:
     * \<brand\>:\<noOfModels\>
     * (<model_1> <price_1>) (<model_2> <price_2>)    (<model_noOfModels> <price_noOfModels>)
 
+Data example:
 ```
 2
 audi:2
@@ -17,6 +20,12 @@ dacia:1
 3
 (blinds-1) (tires-2) (spray-3)
 ```
+
+# Parsing the input
+
+Add two function definitions in the upper part of the `main.c` file (with the other function definitions) for parsing the brands line and for parsing the models line:
+* `void readBrand(char brandName[], int * noOfModels)`
+* `void readModels(double * prices, char ** models)`
 
 ```c
 // read brand name and no of models
