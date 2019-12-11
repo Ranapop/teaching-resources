@@ -92,23 +92,33 @@ void readModels(double * prices, char ** models) {
 }
 ```
 
-In main() - at the begining:
-```c
-// load data
-// read no of brands
-int noOfBrands = 3;
-scanf("%d",&noOfBrands);
-getchar();
-// read model with no of models
-char testName[20];
-int testNo;
-readBrand(testName,&testNo);
-readModels();
-```
-
 Feel free to write code at the begining of the main function to test these functions before moving on.
 
-# Reading 
+# Read additional items
+
+To read the additional items we need to parse the same format as for the brands, which means we could use the same function. We will rename it to `void readPairs(double * prices, char ** names)`, as well as doing some renaming in the function implementation:
+
+```c
+void readPairs(double * prices, char ** names) {
+    char line[MAX_LINE];
+    gets(line);
+    appendCharAtBeginning(line,' ');
+    char * token = strtok(line, "(");
+    // while token!=null
+    int k=0;
+    while (token!=NULL) {
+        // read name (until - )
+        token = strtok(NULL, "-");
+        strcpy(names[k],token);
+        // read price (until ")" )
+        token = strtok(NULL, ")");
+        sscanf(token,"%lf",&prices[k]);
+        k++;
+        // read space until "("
+        token = strtok(NULL, "(");
+    }
+}
+```
 
 # Allocating and filling the arrays
 
