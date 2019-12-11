@@ -128,7 +128,7 @@ We keep the same data structures as until now:
 * an array of arrays of strings - model names
 * an array of arrays of doubles - model prices
 
-To allocate and fill the arrays:
+To allocate and fill the arrays (at the begining of the main function):
 ```c
 // load data
  // read no of brands
@@ -163,4 +163,24 @@ To allocate and fill the arrays:
      additionalItems[i] = (char *) malloc(MAX_ADDITIONAL_ITEM_NAME * sizeof(char));
  }
  readPairs(additionalItemsPrices, additionalItems);
+ ```
+ 
+ To free the arrays (at the end of the main function)
+ ```c
+ // free memory
+ for(int i=0;i<noOfBrands;i++) {
+     for(int j=0;j<noOfModels[i];j++) {
+         free(models[i][j]);
+     }
+     free(brands[i]);
+     free(models[i]);
+     free(prices[i]);
+     free(additionalItems[i]);
+ }
+ free(brands);
+ free(noOfModels);
+ free(models);
+ free(prices);
+ free(additionalItems);
+ free(additionalItemsPrices);
  ```
