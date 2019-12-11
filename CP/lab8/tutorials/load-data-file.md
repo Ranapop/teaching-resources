@@ -9,11 +9,12 @@ The FILE_PATH is a constant holding `"../data.txt"`.
 
 ```c
 FILE * carDataFile;
-  carDataFile = fopen(FILE_PATH, "r");
-  if(carDataFile==NULL) {
-      perror("File could not be open");
-      exit(-1);
-  }```
+carDataFile = fopen(FILE_PATH, "r");
+if(carDataFile==NULL) {
+    perror("File could not be open");
+    exit(-1);
+}
+```
 
 # Modifying the input functions to read from a file
 
