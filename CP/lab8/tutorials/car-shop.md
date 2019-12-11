@@ -120,7 +120,7 @@ void readPairs(double * prices, char ** names) {
 }
 ```
 
-# Allocating and filling the arrays
+# Allocating, filling and freeing the arrays
 
 We keep the same data structures as until now:
 * an array of strings - brand names 
@@ -128,4 +128,39 @@ We keep the same data structures as until now:
 * an array of arrays of strings - model names
 * an array of arrays of doubles - model prices
 
-We will 
+To allocate and fill the arrays:
+```c
+// load data
+ // read no of brands
+ int noOfBrands = 3;
+ scanf("%d", &noOfBrands);
+ getchar();
+ char **brands = (char **) malloc(noOfBrands * sizeof(char *));
+ int *noOfModels = (int *) malloc(noOfBrands * sizeof(int));
+ char ***models = (char ***) malloc(noOfBrands * sizeof(char **));
+ double **prices = (double **) malloc(noOfBrands * sizeof(double *));
+ for (int i = 0; i < noOfBrands; i++) {
+     brands[i] = (char *) malloc(MAX_BRAND_NAME * sizeof(char));
+     // read brand & no of models
+     readBrand(brands[i], &noOfModels[i]);
+     // read models
+     models[i] = (char **) malloc(noOfModels[i] * sizeof(char *));
+     prices[i] = (double *) malloc(noOfModels[i] * sizeof(double));
+     for (int j = 0; j < noOfModels[i]; j++) {
+         // read model name & model price
+         models[i][j] = (char *) malloc(MAX_MODEL_NAME * sizeof(char));
+     }
+     readPairs(prices[i], models[i]);
+ }
+
+ //read additional items
+ int noOfAdditionalItems;
+ scanf("%d",&noOfAdditionalItems);
+ char **additionalItems = (char **) malloc(noOfBrands * sizeof(char *));
+ double *additionalItemsPrices = (double *) malloc(noOfBrands * sizeof(double));
+ scanf("%d", &noOfAdditionalItems);
+ for (int i = 0; i < noOfAdditionalItems; i++) {
+     additionalItems[i] = (char *) malloc(MAX_ADDITIONAL_ITEM_NAME * sizeof(char));
+ }
+ readPairs(additionalItemsPrices, additionalItems);
+ ```
