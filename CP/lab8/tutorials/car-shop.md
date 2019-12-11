@@ -9,6 +9,8 @@ The input format for loading is as follows:
 * the following next 2* _noOFBrands_ lines:
     * \<brand\>:\<noOfModels\>
     * (<model_1>-<price_1>) (<model_2>-<price_2>)    (<model_noOfModels>-<price_noOfModels>)
+* number of additional items (noOfAdditionalItems)
+* (<item_1>-<price_1>) (<item_1>-<price_2>)    (<item_noOfAdditionalItems>-<price_noOfAdditionalItems>)
 
 Data example:
 ```
@@ -105,6 +107,8 @@ readModels();
 ```
 
 Feel free to write code at the begining of the main function to test these functions before moving on.
+
+# Reading 
 
 # Allocating and filling the arrays
 
