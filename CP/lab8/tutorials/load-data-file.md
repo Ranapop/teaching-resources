@@ -106,3 +106,90 @@ fclose(carDataFile);
 ````
 
 # Refactor
+
+We can extract some functions for reading the data (including memory allocation). We will just need to send the addresses of our data structures to be able to do the allocations inside the functions:
+```c
+void readBrandsWithModels(FILE *carDataFile, int *noOfBrandsAddr, char ***brandsAddr, int **noOfModelsAddr,
+                          char ****modelsAddr, double ***pricesAddr) {
+    // read no of brands
+    int noOfBrands;
+    fscanf(carDataFile, "%d", &noOfBrands);
+    fgetc(carDataFile);
+    char **brands = (char **) malloc(noOfBrands * sizeof(char *));
+    int *noOfModels = (int *) malloc(noOfBrands * sizeof(int));
+    char ***models = (char ***) malloc(noOfBrands * sizeof(char **));
+    double **prices = (double **) malloc(noOfBrands * sizeof(double *));
+    for (int i = 0; i < noOfBrands; i++) {
+        brands[i] = (char *) malloc(MAX_BRAND_NAME * sizeof(char));
+        // read brand & no of models
+        readBrand(carDataFile, brands[i], &noOfModels[i]);
+        // read models
+        models[i] = (char **) malloc(noOfModels[i] * sizeof(char *));
+        prices[i] = (double *) malloc(noOfModels[i] * sizeof(double));
+        for (int j = 0; j < noOfModels[i]; j++) {
+            // read model name & model price
+            models[i][j] = (char *) malloc(MAX_MODEL_NAME * sizeof(char));
+        }
+        readPairs(carDataFile, prices[i], models[i]);
+    }
+    *noOfBrandsAddr = noOfBrands;
+    *brandsAddr = brands;
+    *noOfModelsAddr = noOfModels;
+    *modelsAddr = models;
+    *pricesAddr = prices;
+}
+
+void readAdditionalItems(FILE *carDataFile, int *noOfAdditionalItemsAddr, char ***additionalItemsAddr,
+                         double **additionalItemsPricesAddr) {
+    //read additional items
+    int noOfAdditionalItems;
+    fscanf(carDataFile, "%d", &noOfAdditionalItems);
+    fgetc(carDataFile);
+    char **additionalItems = (char **) malloc(noOfAdditionalItems * sizeof(char *));
+    double *additionalItemsPrices = (double *) malloc(noOfAdditionalItems * sizeof(double));
+    fscanf(carDataFile, "%d", &noOfAdditionalItems);
+    for (int i = 0; i < noOfAdditionalItems; i++) {
+        additionalItems[i] = (char *) malloc(MAX_ADDITIONAL_ITEM_NAME * sizeof(char));
+    }
+    readPairs(carDataFile, additionalItemsPrices, additionalItems);
+    *noOfAdditionalItemsAddr = noOfAdditionalItems;
+    *additionalItemsAddr = additionalItems;
+    *additionalItemsPricesAddr = additionalItemsPrices;
+}
+
+void readData(FILE *carDataFile, int *noOfBrandsAddr, char ***brandsAddr, int **noOfModelsAddr,
+              char ****modelsAddr, double ***pricesAddr,
+              int *noOfAdditionalItemsAddr, char ***additionalItemsAddr, double **additionalItemsPricesAddr) {
+    readBrandsWithModels(carDataFile, noOfBrandsAddr, brandsAddr, noOfModelsAddr, modelsAddr, pricesAddr);
+    readAdditionalItems(carDataFile, noOfAdditionalItemsAddr, additionalItemsAddr, additionalItemsPricesAddr);
+}
+```
+
+We can also create a function for freeing the memory:
+```c
+void freeData(int noOfBrands, char **brands, int *noOfModels,
+              char ***models, double **prices,
+              int noOfAdditionalItems, char **additionalItems, double *additionalItemsPrices) {
+
+    for (int i = 0; i < noOfBrands; i++) {
+        for (int j = 0; j < noOfModels[i]; j++) {
+            free(models[i][j]);
+        }
+        free(brands[i]);
+        free(models[i]);
+        free(prices[i]);
+        free(additionalItems[i]);
+    }
+    free(brands);
+    free(noOfModels);
+    free(models);
+    free(prices);
+    for (int i = 0; i < noOfAdditionalItems; i++) {
+        free(additionalItems[i]);
+    }
+    free(additionalItems);
+    free(additionalItemsPrices);
+}
+```
+
+More could be extracted but we will leave it like this for now. The final result can be found in the `car-shop` folder of this laboratory.
