@@ -5,8 +5,8 @@ In this tutorial you will add the functionality of loading car data in the `car-
 The input format for loading is as follows:
 * on the first line the number of brands (noOfBrands)
 * the following next 2* _noOFBrands_ lines:
-** <brand>:<noOfModels>
-** (<model_1> <price_1>) (<model_2> <price_2>)    (<model_noOfModels> <price_noOfModels>)
+    * <brand>:<noOfModels>
+    * (<model_1> <price_1>) (<model_2> <price_2>)    (<model_noOfModels> <price_noOfModels>)
 
 ```
 2
