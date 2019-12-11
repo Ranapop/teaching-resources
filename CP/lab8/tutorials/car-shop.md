@@ -103,3 +103,7 @@ int testNo;
 readBrand(testName,&testNo);
 readModels();
 ```
+
+Feel free to write code at the begining of the main function to test these functions before moving on.
+
+# Allocating and filling the arrays
