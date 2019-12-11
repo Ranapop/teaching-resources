@@ -27,6 +27,10 @@ Add two function definitions in the upper part of the `main.c` file (with the ot
 * `void readBrand(char brandName[], int * noOfModels)`
 * `void readModels(double * prices, char ** models)`
 
+## Read brand
+
+First, let's write a function for parsing the `<brand\>:\<noOfModels\` line.
+
 ```c
 // read brand name and no of models
 void readBrand(char brandName[], int * noOfModels) {
