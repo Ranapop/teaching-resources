@@ -27,16 +27,28 @@ void readBrand(char brandName[], int * noOfModels) {
 }
 
 
-void readModels() {
+void appendCharAtBeginning(char * str, char c) {
+    // +1 to include string terminator
+    int len = strlen(str)+1;
+    memmove(str+1,str,len);
+    str[0] = ' ';
+}
+
+void readModels(double * prices, char ** models) {
     char line[MAX_LINE];
     gets(line);
+    appendCharAtBeginning(line,' ');
     char * token = strtok(line, "(");
     // while token!=null
+    int k=0;
     while (token!=NULL) {
         // read model name (until - )
         token = strtok(NULL, "-");
+        strcpy(models[k],token);
         // read price (until ")" )
         token = strtok(NULL, ")");
+        sscanf(token,"%lf",&prices[k]);
+        k++;
         // read space until "("
         token = strtok(NULL, "(");
     }
