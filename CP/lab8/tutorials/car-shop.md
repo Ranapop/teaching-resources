@@ -8,7 +8,7 @@ The input format for loading is as follows:
 * on the first line the number of brands (noOfBrands)
 * the following next 2* _noOFBrands_ lines:
     * \<brand\>:\<noOfModels\>
-    * (<model_1> <price_1>) (<model_2> <price_2>)    (<model_noOfModels> <price_noOfModels>)
+    * (<model_1>-<price_1>) (<model_2>-<price_2>)    (<model_noOfModels>-<price_noOfModels>)
 
 Data example:
 ```
@@ -47,6 +47,8 @@ void readBrand(char brandName[], int * noOfModels) {
 }
 ```
 ## Read models
+
+We will use `strtok` for parsing the model names as well. We want to parse a string of the form: `(<model_1>-<price_1>) (<model_2>-<price_2>)    (<model_noOfModels>-<price_noOfModels>)` and extract the `model_1` and `model_2` etc. and `price_1` and `price_2` etc.. To do this, we 
 
 ```c
 void appendCharAtBeginning(char * str, char c) {
