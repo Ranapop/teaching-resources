@@ -29,7 +29,7 @@ Add two function definitions in the upper part of the `main.c` file (with the ot
 
 ## Read brand
 
-First, let's write a function for parsing the `<brand\>:\<noOfModels\` line.
+First, let's write a function for parsing the `<brand>:<noOfModels>` line. We will use `strtok` for dividing the string using the `:` delimiter. We will copy the first token to `brandName` and transform the second token to an int using `atoi` and put it in the `noOfModels`.
 
 ```c
 // read brand name and no of models
