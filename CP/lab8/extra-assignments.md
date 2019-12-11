@@ -3,7 +3,7 @@
 You will work on the extra assignment from https://github.com/Ranapop/teaching-resources/blob/master/CP/lab7/extra-assignments/sign-up.md.
 For the previous extra assignment, you should have saved a list of (username, password) in memeory. 
 
-Now, it's time to store that data into a file, so that accounts can be created across different executions of the program (that means you will have to append in the file, not rewrite).
+Now, it's time to store that data into a file, so that accounts can be created across different executions of the program (that means you will have to append in the file, not rewrite - see update mode).
 
 But it's not a good idea to store the passwords in plain text. You will have to encrypt the passwords, using an algorithm of your choosing, but an algorithm that uses one key.
 
