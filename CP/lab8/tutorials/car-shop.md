@@ -26,7 +26,6 @@ void readBrand(char brandName[], int * noOfModels) {
     *noOfModels = atoi(token);
 }
 
-
 void appendCharAtBeginning(char * str, char c) {
     // +1 to include string terminator
     int len = strlen(str)+1;
