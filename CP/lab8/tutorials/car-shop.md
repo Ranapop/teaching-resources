@@ -107,3 +107,11 @@ readModels();
 Feel free to write code at the begining of the main function to test these functions before moving on.
 
 # Allocating and filling the arrays
+
+We keep the same data structures as until now:
+* an array of strings - brand names 
+* an array of ints - number of models for each brand
+* an array of arrays of strings - model names
+* an array of arrays of doubles - model prices
+
+We will 
