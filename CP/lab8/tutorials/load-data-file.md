@@ -99,4 +99,10 @@ void readPairs(FILE *f, double *prices, char **names) {
 
 # Closing the file
 
+After reading the data, we can close the file:
+
+```c
+fclose(carDataFile);
+````
+
 # Refactor
