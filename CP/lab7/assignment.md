@@ -43,7 +43,7 @@ Please define the "Please load the data" as a constant:
 | Free memory drinks data      | 0.5 p  |
 | Define message               | 0.5 p  |
 
-You may be panalized for:
+You may be penalized for:
 * bugs 
 * long functions, duplicate code, magic numbers, badly named variables
 
