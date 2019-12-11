@@ -45,7 +45,10 @@ void readBrand(char brandName[], int * noOfModels) {
     token = strtok(NULL,delim);
     *noOfModels = atoi(token);
 }
+```
+## Read models
 
+```c
 void appendCharAtBeginning(char * str, char c) {
     // +1 to include string terminator
     int len = strlen(str)+1;
