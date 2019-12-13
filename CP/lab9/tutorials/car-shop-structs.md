@@ -9,6 +9,8 @@ In this tutorial we will be defining structures for our entities in the `car-sho
 
 # Buyer
 
+# Defining the structure
+
 Start by defining a structure for the buyer in `buyer.h`:
 
 ```c
@@ -19,6 +21,8 @@ typedef struct _buyer {
     char * address;
 } buyer;
 ```
+
+# Allocating memory for members
 
 If we're defining the structure members like this, we will need to dynamically allocate them. For this, in `buyer.c` we define some constants:
 
@@ -44,6 +48,8 @@ We expose this function in `buyer.h`:
 ```c
 buyer createBuyer();
 ```
+
+# Using the structure in inputPersonalData & displayPersonalData
 
 In main.c, we can use this function now to create a new buyer (put it with the other declarations, for ex after chosenAdditionalItems:
 
