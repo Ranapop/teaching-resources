@@ -178,7 +178,6 @@ void freeData(int noOfBrands, char **brands, int *noOfModels,
         free(brands[i]);
         free(models[i]);
         free(prices[i]);
-        free(additionalItems[i]);
     }
     free(brands);
     free(noOfModels);
