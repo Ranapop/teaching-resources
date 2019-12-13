@@ -51,3 +51,45 @@ In main.c, we can use this function now to create a new buyer (put it with the o
 buyer b = createBuyer();
 ```
 
+Now we can change the functions `inputPersonalData` and `displayPersonalData` to use this structure instead. Their implementations become:
+```c
+void inputPersonalData(buyer b) {
+    // Input personal data
+    printf("Please input your data\n");
+    printf("---First name:\n");
+    gets(b.firstName);
+    printf("---Last name:\n");
+    gets(b.lastName);
+    readPhoneNumber(b.phoneNumber);
+    printf("---Address\n");
+    gets(b.address);
+}
+
+void displayPersonalData(buyer b) {
+    printf("Customer data:\n");
+    printf("-name: %s %s\n", b.firstName, b.lastName);
+    printf("-phone number: %s\n", b.phoneNumber);
+    printf("-address: %s\n", b.address);
+}
+```
+and their definitions (`buyer.h`):
+```c
+void inputPersonalData(buyer b);
+void displayPersonalData(buyer b);
+```
+
+We can use them in main.c like this:
+```c
+inputPersonalData(b);
+```
+```c
+displayPersonalData(b);
+```
+and we can remove from `main()` the following:
+```c
+char firstName[20];
+char lastName[20];
+char phoneNumber[10];
+char address[30];
+```
+
