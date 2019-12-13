@@ -167,22 +167,23 @@ To allocate and fill the arrays (at the begining of the main function):
  
  To free the arrays (at the end of the main function)
  ```c
- // free memory
- for(int i=0;i<noOfBrands;i++) {
-     for(int j=0;j<noOfModels[i];j++) {
-         free(models[i][j]);
-     }
-     free(brands[i]);
-     free(models[i]);
-     free(prices[i]);
-     free(additionalItems[i]);
- }
- free(brands);
- free(noOfModels);
- free(models);
- free(prices);
- free(additionalItems);
- free(additionalItemsPrices);
+for (int i = 0; i < noOfBrands; i++) {
+        for (int j = 0; j < noOfModels[i]; j++) {
+            free(models[i][j]);
+        }
+        free(brands[i]);
+        free(models[i]);
+        free(prices[i]);
+    }
+    free(brands);
+    free(noOfModels);
+    free(models);
+    free(prices);
+    for (int i = 0; i < noOfAdditionalItems; i++) {
+        free(additionalItems[i]);
+    }
+    free(additionalItems);
+    free(additionalItemsPrices);
  ```
  
  # Function changes
@@ -317,19 +318,21 @@ int main() {
     }
 
     // free memory
-    for(int i=0;i<noOfBrands;i++) {
-        for(int j=0;j<noOfModels[i];j++) {
+    for (int i = 0; i < noOfBrands; i++) {
+        for (int j = 0; j < noOfModels[i]; j++) {
             free(models[i][j]);
         }
         free(brands[i]);
         free(models[i]);
         free(prices[i]);
-        free(additionalItems[i]);
     }
     free(brands);
     free(noOfModels);
     free(models);
     free(prices);
+    for (int i = 0; i < noOfAdditionalItems; i++) {
+        free(additionalItems[i]);
+    }
     free(additionalItems);
     free(additionalItemsPrices);
 
