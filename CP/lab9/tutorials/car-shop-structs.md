@@ -7,7 +7,7 @@ In this tutorial we will be defining structures for our entities in the `car-sho
 * additional item (name, price)
 * contract (customer, model, additional items)
 
-#Buyer
+# Buyer
 
 Start by defining a structur for the buyer in `buyer.h`:
 ```c
