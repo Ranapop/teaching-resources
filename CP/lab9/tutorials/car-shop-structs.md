@@ -101,3 +101,29 @@ char address[30];
 
 ## Pass by reference
 
+It's better to pass structures by reference (sending just the address, not the whole data). We will modify our functions to do that. IN `buyer.c`:
+```c
+void inputPersonalData(buyer * b) {
+    // Input personal data
+    printf("Please input your data\n");
+    printf("---First name:\n");
+    gets(b->firstName);
+    printf("---Last name:\n");
+    gets(b->lastName);
+    readPhoneNumber(b->phoneNumber);
+    printf("---Address\n");
+    gets(b->address);
+}
+
+void displayPersonalData(buyer * b) {
+    printf("Customer data:\n");
+    printf("-name: %s %s\n", b->firstName, b->lastName);
+    printf("-phone number: %s\n", b->phoneNumber);
+    printf("-address: %s\n", b->address);
+}
+```
+In buyer.h:
+```c
+void inputPersonalData(buyer * b);
+void displayPersonalData(buyer * b);
+```
