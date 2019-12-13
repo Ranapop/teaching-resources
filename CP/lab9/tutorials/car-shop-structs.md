@@ -101,7 +101,8 @@ char address[30];
 
 ## Pass by reference
 
-It's better to pass structures by reference (sending just the address, not the whole data). We will modify our functions to do that. IN `buyer.c`:
+It's better to pass structures by reference (sending just the address, not the whole data). We will modify our functions to do that. 
+In `buyer.c`:
 ```c
 void inputPersonalData(buyer * b) {
     // Input personal data
