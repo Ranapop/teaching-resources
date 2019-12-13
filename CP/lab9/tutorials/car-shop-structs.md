@@ -9,7 +9,7 @@ In this tutorial we will be defining structures for our entities in the `car-sho
 
 # Buyer
 
-Start by defining a structur for the buyer in `buyer.h`:
+Start by defining a structure for the buyer in `buyer.h`:
 ```c
 typedef struct _buyer {
     char * firstName;
