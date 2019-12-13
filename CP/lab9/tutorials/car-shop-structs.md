@@ -127,3 +127,11 @@ In buyer.h:
 void inputPersonalData(buyer * b);
 void displayPersonalData(buyer * b);
 ```
+And in `main.c`:
+```c
+inputPersonalData(&b);
+```
+```c
+displayPersonalData(&b);
+```
+                
