@@ -20,4 +20,4 @@ You should store on the first line the encryption/decreption key, then on the se
 | Encrypt passwords on save, decrypt passwords on load           | 1 p    |
 
 # Due data
-14.01.2019
+14.12.2019
