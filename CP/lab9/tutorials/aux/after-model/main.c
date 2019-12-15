@@ -79,7 +79,7 @@ int main() {
                 break;
             }
             case CHOOSE_MODEL: {
-                displayModelOptions(&modelsMatrix[brandChoice], noOfModels[brandChoice], brands[brandChoice]);
+                displayModelOptions(modelsMatrix[brandChoice], noOfModels[brandChoice], brands[brandChoice]);
                 modelChoice = getChoiceIndex(noOfModels[brandChoice], &state);
                 break;
             }
