@@ -3,7 +3,7 @@
 
 You are required to refactor your code for the `food-ordering` application to work with at least four structures. For each structure, you should define the structure and the functions that work with it in a `.h` file, and the implementations for those functions in a `.c` file (similar to how it was done for the car-shop application).
 
-# Grading (3p)
+# Grading 
 
 | Requirement                                                    | Points |
 | -------------------------------------------------------------- | ------ |
