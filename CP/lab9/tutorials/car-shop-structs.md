@@ -3,7 +3,8 @@
 
 In this tutorial we will be defining structures for our entities in the `car-shop` application. We could identify:
 * buyer (first name, last name, phone number, address)
-* model (name, price, brandName)
+* model (name, price)
+* brand (name, noOfModels, models)
 * additional item (name, price)
 * contract (buyer, model, additional items)
 
@@ -252,3 +253,301 @@ void freeData(int noOfBrands, char **brands, int *noOfModels, model **models,
               int noOfAdditionalItems, char **additionalItems, double *additionalItemsPrices);
 ```
 If you have issues adapting the implementation yourself, you can look over: https://github.com/Ranapop/teaching-resources/tree/master/CP/lab9/tutorials/aux/after-model
+
+# Brand
+
+Create files `brand.h` and `brand.c` with the following content:
+
+brand.h
+```c
+typedef struct _brand {
+    char * name;
+    int noOfModels;
+    model * models;
+} brand;
+
+void readBrandsWithModels(FILE *carDataFile, int *noOfBrandsAddr, brand ** brandsAddr);
+void displayBrandOptions(int noOfBrands, brand * brands);
+void freeBrands(brand * brands, int noOfBrands);
+```
+brand.c
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "brand.h"
+#include "input.h"
+
+#define MAX_BRAND_NAME 10
+
+brand createBrand() {
+    brand b;
+    b.name = (char *) malloc(MAX_BRAND_NAME * sizeof(char));
+    b.models = NULL;
+    return b;
+}
+
+// read brand name and no of models
+void readBrand(FILE *f, char *brandName, int *noOfModels) {
+    char line[MAX_LINE];
+    fgets(line, MAX_LINE, f);
+    line[strlen(line) - 1] = '\0';
+    const char delim[2] = ":";
+    char *token;
+    //brand name
+    token = strtok(line, delim);
+    strcpy(brandName, token);
+    //noOfModels
+    token = strtok(NULL, delim);
+    *noOfModels = atoi(token);
+}
+
+
+void readBrandsWithModels(FILE *carDataFile, int *noOfBrandsAddr, brand **brandsAddr) {
+    // read no of brands
+    int noOfBrands;
+    fscanf(carDataFile, "%d", &noOfBrands);
+    fgetc(carDataFile);
+    brand *brands = (brand *) malloc(noOfBrands * sizeof(brand));
+    for (int i = 0; i < noOfBrands; i++) {
+        brands[i] = createBrand();
+        // read brand & no of models
+        readBrand(carDataFile, brands[i].name, &(brands[i].noOfModels));
+        // read models
+        readModels(carDataFile, &(brands[i].models), brands[i].noOfModels);
+    }
+    *noOfBrandsAddr = noOfBrands;
+    *brandsAddr = brands;
+}
+
+
+void displayBrandOptions(int noOfBrands, brand * brands) {
+    // Choose the brand
+    printf("Please choose the car brand\n");
+    for (int i = 0; i < noOfBrands; i++) {
+        putchar('a' + i);
+        printf(") %s\n", brands[i].name);
+    }
+    printf("%c) Go back\n", 'a' + noOfBrands);
+}
+
+void freeBrands(brand * brands, int noOfBrands) {
+    for (int i = 0; i < noOfBrands; i++) {
+        for (int j = 0; j < brands[i].noOfModels; j++) {
+            freeModel(&(brands[i].models[j]));
+        }
+        free(brands[i].models);
+        free(brands[i].name);
+    }
+    free(brands);
+}
+```
+
+And change the `main.c` file accordingly, resulting in:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include "buyer.h"
+#include "input.h"
+#include "model.h"
+#include "brand.h"
+
+#define MAX_ADDITIONAL_ITEM_NAME 30
+
+#define FILE_PATH "../data.txt"
+
+void printAdditionalItemsChoices(int noAdditionalItems, char **additionalItems,
+                                 double *additionalItemsPrices);
+
+int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], int *state);
+
+void displayCarData(model *m, int noAddItemsChosen, int chosenAdditionalItems[],
+                    char **additionalItems,
+                    double additionalItemsPrices[]);
+
+void readData(FILE *carDataFile, int *noOfBrandsAddr, brand **brandsAddr,
+              int *noOfAdditionalItemsAddr, char ***additionalItemsAddr, double **additionalItemsPricesAddr);
+
+void freeData(brand *brands, int noOfBrands,
+              int noOfAdditionalItems, char **additionalItems, double *additionalItemsPrices);
+
+int main() {
+
+    FILE *carDataFile;
+    carDataFile = fopen(FILE_PATH, "r");
+    if (carDataFile == NULL) {
+        perror("File could not be open");
+        exit(-1);
+    }
+
+    int noOfBrands;
+    brand *brands;
+    int noOfAdditionalItems;
+    char **additionalItems;
+    double *additionalItemsPrices;
+
+    readData(carDataFile, &noOfBrands, &brands,
+             &noOfAdditionalItems, &additionalItems, &additionalItemsPrices);
+
+    fclose(carDataFile);
+
+    printf("Welcome to our car shop.\n");
+
+    //user input
+    int choice, brandChoice, modelChoice;
+    int noAddItemsChosen = 0;
+    int chosenAdditionalItems[3];
+
+    buyer b = createBuyer();
+    enum State {
+        INPUT_BUYER_DATA, CHOOSE_BRAND, CHOOSE_MODEL, CHOOSE_ADDITIONAL_ITEM, SIGN_CONTRACT
+    };
+
+    int state = 0;
+    int contractSigned = 0;
+    while (!contractSigned) {
+        switch (state) {
+            case INPUT_BUYER_DATA: {
+                inputPersonalData(&b);
+                state++;
+                break;
+            }
+            case CHOOSE_BRAND: {
+                displayBrandOptions(noOfBrands, brands);
+                brandChoice = getChoiceIndex(noOfBrands, &state);
+                break;
+            }
+            case CHOOSE_MODEL: {
+                displayModelOptions(brands[brandChoice].models, brands[brandChoice].noOfModels,
+                                    brands[brandChoice].name);
+                modelChoice = getChoiceIndex(brands[brandChoice].noOfModels, &state);
+                break;
+            }
+            case CHOOSE_ADDITIONAL_ITEM: {
+                printAdditionalItemsChoices(noOfAdditionalItems, additionalItems, additionalItemsPrices);
+                noAddItemsChosen = chooseAdditionalItems(noOfAdditionalItems, chosenAdditionalItems, &state);
+                break;
+            }
+            case SIGN_CONTRACT: {
+                // Display contract
+                printf("Your contract is:\n");
+                printf("-------------\n");
+                displayPersonalData(&b);
+                displayCarData(&(brands[brandChoice].models[modelChoice]),
+                               noAddItemsChosen, chosenAdditionalItems, additionalItems, additionalItemsPrices);
+                printf("-------------\n");
+                printf("a) Sign\n");
+                printf("b) Go back\n");
+                choice = getchar();
+                if (choice == 'a') {
+                    contractSigned = 1;
+                } else {
+                    state--;
+                }
+                // consume new line
+                getchar();
+                break;
+            }
+        }
+    }
+
+    // free memory
+    freeData(brands, noOfBrands,
+             noOfAdditionalItems, additionalItems, additionalItemsPrices);
+    return 0;
+}
+
+void printAdditionalItemsChoices(int noAdditionalItems, char **additionalItems, double *additionalItemsPrices) {
+    // Choose the additional items
+    printf("Choose additional items (separated by comma)\n");
+    for (int i = 0; i < noAdditionalItems; i++) {
+        putchar('a' + i);
+        printf(") %s (%.2f)\n", additionalItems[i], additionalItemsPrices[i]);
+    }
+    printf("%c) Go back\n", 'a' + noAdditionalItems);
+}
+
+int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], int *state) {
+
+    int noAddItemsChosen = 0;
+
+    char choice = getchar();
+    if (choice == 'a' + noAdditionalItems) {
+        (*state)--;
+        //consume new line
+        getchar();
+    } else {
+        noAddItemsChosen = 0;
+        while (choice != '\n') {
+
+            chosenAdditionalItems[noAddItemsChosen] = choice - 'a';
+            noAddItemsChosen++;
+            //read comma
+            char comma = getchar();
+            if (comma == '\n') {
+                //after the last letter, a new line entered
+                break;
+            }
+            choice = getchar();
+        }
+        (*state)++;
+    }
+    return noAddItemsChosen;
+}
+
+
+void displayCarData(model *m, int noAddItemsChosen, int chosenAdditionalItems[],
+                    char **additionalItems,
+                    double additionalItemsPrices[]) {
+    printf("Car data:\n");
+    printf("-car model:");
+    displayModel(m);
+    double additionalItemsPrice = 0;
+    for (int i = 0; i < noAddItemsChosen; i++) {
+        additionalItemsPrice += additionalItemsPrices[chosenAdditionalItems[i]];
+    }
+    printf("-additional items (%.2f)\n", additionalItemsPrice);
+    if (noAddItemsChosen != 0) {
+        for (int i = 0; i < noAddItemsChosen; i++) {
+            printf("--%s (%.2f)\n", additionalItems[chosenAdditionalItems[i]],
+                   additionalItemsPrices[chosenAdditionalItems[i]]);
+        }
+    }
+    printf("Total price: %.2f\n", m->price + additionalItemsPrice);
+}
+
+void readAdditionalItems(FILE *carDataFile, int *noOfAdditionalItemsAddr, char ***additionalItemsAddr,
+                         double **additionalItemsPricesAddr) {
+    //read additional items
+    int noOfAdditionalItems;
+    fscanf(carDataFile, "%d", &noOfAdditionalItems);
+    fgetc(carDataFile);
+    char **additionalItems = (char **) malloc(noOfAdditionalItems * sizeof(char *));
+    double *additionalItemsPrices = (double *) malloc(noOfAdditionalItems * sizeof(double));
+    fscanf(carDataFile, "%d", &noOfAdditionalItems);
+    for (int i = 0; i < noOfAdditionalItems; i++) {
+        additionalItems[i] = (char *) malloc(MAX_ADDITIONAL_ITEM_NAME * sizeof(char));
+    }
+    readPairs(carDataFile, additionalItemsPrices, additionalItems);
+    *noOfAdditionalItemsAddr = noOfAdditionalItems;
+    *additionalItemsAddr = additionalItems;
+    *additionalItemsPricesAddr = additionalItemsPrices;
+}
+
+void readData(FILE *carDataFile, int *noOfBrandsAddr, brand **brandsAddr,
+              int *noOfAdditionalItemsAddr, char ***additionalItemsAddr, double **additionalItemsPricesAddr) {
+    readBrandsWithModels(carDataFile, noOfBrandsAddr, brandsAddr);
+    readAdditionalItems(carDataFile, noOfAdditionalItemsAddr, additionalItemsAddr, additionalItemsPricesAddr);
+}
+
+void freeData(brand *brands, int noOfBrands,
+              int noOfAdditionalItems, char **additionalItems, double *additionalItemsPrices) {
+    freeBrands(brands, noOfBrands);
+    for (int i = 0; i < noOfAdditionalItems; i++) {
+        free(additionalItems[i]);
+    }
+    free(additionalItems);
+    free(additionalItemsPrices);
+}
+```
+You can see the final changes in the `car-shop` folder of this lab (`lab9`) as well.
