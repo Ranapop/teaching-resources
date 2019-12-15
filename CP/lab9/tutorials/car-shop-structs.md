@@ -140,7 +140,7 @@ displayPersonalData(&b);
 
 ## Refactoring
 
-First, we will create 2 new files, 'input.h' and 'input.c'. We will move the implementations of `getChoiceIndex`, `appendCharAtBeginning` and `readPairs` into 'input.c` and expose the following in `input.h` (no need to expose `appendCharAtBeginning`, as it's only used internally in `input.c`):
+First, we will create 2 new files, `input.h` and `input.c`. We will move the implementations of `getChoiceIndex`, `appendCharAtBeginning` and `readPairs` into `input.c` and expose the following in `input.h` (no need to expose `appendCharAtBeginning`, as it's only used internally in `input.c`):
 
 ```c
 //
