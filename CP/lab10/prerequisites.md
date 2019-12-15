@@ -6,4 +6,4 @@
 
 # Set up
 
-* set up the `car-shop` application as in __lab9/car-shop__ (using structures for buyer, model & brand)
+* none (except being able to run a C program)- won't be working on top of `car-shop` this laboratory
