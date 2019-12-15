@@ -135,4 +135,25 @@ inputPersonalData(&b);
 ```c
 displayPersonalData(&b);
 ```
-                
+
+# Model
+
+## Refactoring
+
+First, we will create 2 new files, 'input.h' and 'input.c'. We will move the implementations of `getChoiceIndex`, `appendCharAtBeginning` and `readPairs` into 'input.c` and expose the following in `input.h` (no need to expose `appendCharAtBeginning`, as it's only used internally in `input.c`):
+
+```c
+//
+// Created by roxanappop on 12/15/2019.
+//
+
+#ifndef CAR_SHOP_INPUT_H
+#define CAR_SHOP_INPUT_H
+
+#define MAX_LINE 50
+
+int getChoiceIndex(int noOfChoices, int *state);
+void readPairs(FILE *f, double *prices, char **names);
+
+#endif //CAR_SHOP_INPUT_H
+```
