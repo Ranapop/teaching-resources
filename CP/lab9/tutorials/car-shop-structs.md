@@ -170,7 +170,7 @@ typedef struct _model {
 } model;
 
 void readModels(FILE * carDataFile, model ** modelsAddr, int noOfModels);
-void displayModelOptions(model ** models, int noOfModels, char * brand);
+void displayModelOptions(model * models, int noOfModels, char * brand);
 void displayModel(model * m);
 void freeModel(model * m);
 
@@ -205,12 +205,12 @@ void readModels(FILE * carDataFile, model ** modelsAddr, int noOfModels) {
 }
 
 // will replace the previous displayModelOptions impl
-void displayModelOptions(model ** models, int noOfModels, char * brand) {
+void displayModelOptions(model * models, int noOfModels, char * brand) {
     // Choose the car model
     printf("Please choose the car model for brand %s\n", brand);
     for (int i = 0; i < noOfModels; i++) {
         putchar('a' + i);
-        printf(") %s (%.2f)\n", models[i]->name, models[i]->price);
+        printf(") %s (%.2f)\n", models[i].name, models[i].price);
     }
     printf("%c) Go back\n", 'a' + noOfModels);
 }
