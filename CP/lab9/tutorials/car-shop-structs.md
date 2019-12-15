@@ -157,3 +157,98 @@ void readPairs(FILE *f, double *prices, char **names);
 
 #endif //CAR_SHOP_INPUT_H
 ```
+# Files model.h and model.c
+
+Create a file `model.h` with the following content:
+```c
+#ifndef CAR_SHOP_MODEL_H
+#define CAR_SHOP_MODEL_H
+
+typedef struct _model {
+    char * name;
+    double price;
+} model;
+
+void readModels(FILE * carDataFile, model ** modelsAddr, int noOfModels);
+void displayModelOptions(model ** models, int noOfModels, char * brand);
+void displayModel(model * m);
+void freeModel(model * m);
+
+#endif //CAR_SHOP_MODEL_H
+```
+and the implementations in `model.c`:
+```c
+#include "input.h"
+
+#define MAX_MODEL_NAME 10
+
+// will be used in readData
+void readModels(FILE * carDataFile, model ** modelsAddr, int noOfModels) {
+    model * models = (model*)malloc(noOfModels * sizeof(model));
+    // allocate temporary arrays
+    char ** names = (char **) malloc(noOfModels* sizeof(char *));
+    double * prices = (double *) malloc(noOfModels * sizeof(double));
+    for (int i = 0; i < noOfModels; i++) {
+        // read model name & model price
+        names[i] = (char *) malloc(MAX_MODEL_NAME * sizeof(char));
+    }
+    readPairs(carDataFile, prices, names);
+    //put the data in a models array
+    for(int i=0; i<noOfModels; i++) {
+        models[i].name = names[i];
+        models[i].price = prices[i];
+    }
+    // free temporary data, do not free the strings themselves
+    free(names);
+    free(prices);
+    *modelsAddr = models;
+}
+
+// will replace the previous displayModelOptions impl
+void displayModelOptions(model ** models, int noOfModels, char * brand) {
+    // Choose the car model
+    printf("Please choose the car model for brand %s\n", brand);
+    for (int i = 0; i < noOfModels; i++) {
+        putchar('a' + i);
+        printf(") %s (%.2f)\n", models[i]->name, models[i]->price);
+    }
+    printf("%c) Go back\n", 'a' + noOfModels);
+}
+
+// will be used in displayCarData
+void displayModel(model * m) {
+    printf("%s (%.2f)\n", m->name, m->price);
+}
+
+//will be used in freeData
+void freeModel(model * m) {
+    free(m->name);
+}
+```
+
+In `main.c` get rid of the `models` and `prices` variables, and create:
+```c
+model ** modelsMatrix;
+```
+Do the necessary modifications to use the functions in `model.h` and have your code build. The function headers used in main should look like:
+```c
+void displayBrandOptions(int noOfBrands, char **brands);
+
+void printAdditionalItemsChoices(int noAdditionalItems, char **additionalItems,
+                                 double *additionalItemsPrices);
+
+int chooseAdditionalItems(int noAdditionalItems, int chosenAdditionalItems[], int *state);
+
+void displayCarData(model * m, int noAddItemsChosen, int chosenAdditionalItems[],
+                    char **additionalItems,
+                    double additionalItemsPrices[]);
+
+void readBrand(FILE *f, char *brandName, int *noOfModels);
+
+void readData(FILE *carDataFile, int *noOfBrandsAddr, char ***brandsAddr, int **noOfModelsAddr, model ***modelsAddr,
+              int *noOfAdditionalItemsAddr, char ***additionalItemsAddr, double **additionalItemsPricesAddr);
+
+void freeData(int noOfBrands, char **brands, int *noOfModels, model **models,
+              int noOfAdditionalItems, char **additionalItems, double *additionalItemsPrices);
+```
+If you have issues adapting the implementation yourself, you can look over: https://github.com/Ranapop/teaching-resources/tree/master/CP/lab9/tutorials/aux/after-model
