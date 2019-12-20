@@ -54,7 +54,7 @@ void move(int src, int target, int aux, int n) {
     }
     move(src, aux, target, n-1);
     moveDisk(src, target, n);
-    move(aux, src, target, n-1);
+    move(aux, target, src, n-1);
 }
 
 void hanoiExample(int n) {
