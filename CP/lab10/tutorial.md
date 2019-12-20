@@ -81,14 +81,15 @@ Try to place a queen on each column:
 
 ```c
 int isAttack(int ** board, int n, int row, int col) {
-    for (int i = 0; i < col; i++)
-        if (board[row][i])
-            return 1;
-    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
-        if (board[i][j])
+
+    for (int j = col-1; j>=0; j--)
+        if (board[row][j]==QUEEN)
             return 1;
     for (int i = row, j = col; j >= 0 && i < n; i++, j--)
-        if (board[i][j])
+        if (board[i][j]==QUEEN)
+            return 1;
+    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
+        if (board[i][j]==QUEEN)
             return 1;
     return 0;
 }
@@ -100,13 +101,13 @@ int placeQueens(int ** board, int n, int col) {
     // try all rows
     for(int i=0;i<n;i++) {
         if(!isAttack(board, n, i, col)) {
-            board[i][col] = 1;
+            board[i][col] = QUEEN;
             int canPlaceRest = placeQueens(board, n, col+1);
             if(canPlaceRest) {
                 return 1;
             } else {
                 // clean up this queen
-                board[i][col] = 0;
+                board[i][col] = EMPTY;
             }
         }
     }
@@ -127,7 +128,7 @@ int ** initializeBoard(int n) {
     for(int i=0;i<n;i++) {
         board[i] = (int*)malloc(n* sizeof(int));
         for(int j=0;j<n;j++) {
-            board[i][j] = 0;
+            board[i][j] = EMPTY;
         }
     }
     return board;
