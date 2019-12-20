@@ -19,4 +19,4 @@ You may be penalized for:
 For each extra structure you are working with (with its own files, functions) you can get up to 1 point.
 
 # Due date
-22.01.2019
+22.12.2019
