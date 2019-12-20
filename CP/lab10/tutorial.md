@@ -81,17 +81,13 @@ Try to place a queen on each column:
 
 ```c
 int isAttack(int ** board, int n, int row, int col) {
-    int i, j;
-    /* Check this row on left side */
-    for (i = 0; i < col; i++)
+    for (int i = 0; i < col; i++)
         if (board[row][i])
             return 1;
-    /* Check upper diagonal on left side */
-    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
+    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
         if (board[i][j])
             return 1;
-    /* Check lower diagonal on left side */
-    for (i = row, j = col; j >= 0 && i < n; i++, j--)
+    for (int i = row, j = col; j >= 0 && i < n; i++, j--)
         if (board[i][j])
             return 1;
     return 0;
