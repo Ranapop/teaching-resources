@@ -72,10 +72,10 @@ Place N queens on the chessboard so that no two queens attack eachother.
 
 Try to place a queen on each column:
 * go from top to bottom trying to find a row:
-** if there is no attack with the already placed queens, place queen on the current square and also place following queens
-** if there is no placement for the following queens, move down to the next square 
-** if there is a placement, return true
-** if after traversing the rows top down, there is no valid placement, we return false
+  * if there is no attack with the already placed queens, place queen on the current square and also place following queens
+  * if there is no placement for the following queens, move down to the next square 
+  * if there is a placement, return true
+  * if after traversing the rows top down, there is no valid placement, we return false
 
 ### Implementation
 
