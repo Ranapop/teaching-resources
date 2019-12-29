@@ -96,6 +96,6 @@ Please choose the food you feel like eating today:
 | Sign in with incorrect password                | 0.5 p  |
 | Sign up with non-existing & valid password     | 0.5 p  |
 | Sign up with existing user                     | 0.5 p  |
-| Sign up with existing user && invalid password | 1.5 p  |
+| Sign up with non-existing user && invalid password | 1.5 p  |
 | Going back from food choosing                  | 0.5 p  |
 
