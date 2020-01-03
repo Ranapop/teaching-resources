@@ -6,6 +6,6 @@ Grading:
 * 3 p for 3.13
 * 3 p for 3.14
 
-Due date: 04.01.2019
+Due date: 06.01.2019
 
 
