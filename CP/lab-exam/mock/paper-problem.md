@@ -1,3 +1,19 @@
+# Paper problem
+
+## Input
+
+You are given as input a file `input.txt` with the following content:
+* on the first line a number _n_
+* on the second line _n_ words
+
+Input example:
+```
+4
+ana are o floare
+```
+
+## Task
+
 Your task is to count the number of vowels in each word, doing so with a  recursive solution. You should implement and use a function with the following header:
 ```c
 int countVowels(char * word);
@@ -9,7 +25,7 @@ You have to write in `output.txt` a sequence of numbers representing the vowel c
 
 Output example:
 ```
-2 2 2
+2 2 1 3
 ```
 
 ## Assumptions
