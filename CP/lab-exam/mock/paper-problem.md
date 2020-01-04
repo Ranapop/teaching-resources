@@ -30,8 +30,8 @@ Output example:
 
 ## Assumptions
 
-You may assume the words are up to 20 characters each.
-You may not assume the file `input.txt` exists, and your program should exit immediately if the file does not exist or cannot be opened.
+* You may assume the words are up to 20 characters each.
+* You may not assume the file `input.txt` exists, and your program should exit immediately if the file does not exist or cannot be opened.
 
 ## Grading 
 
