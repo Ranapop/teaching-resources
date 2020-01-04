@@ -107,7 +107,7 @@ Best student is Vlad Cira
 | ex-officio                            | 1 p    |
 
 Notes:
-* note1: you should have at least `main.c`, `student.c`, and `student.h`
+* note1: you should have more than a `main.c` file
 * note2: you should
   * not use local paths for files (please use "../students.txt" and "../output.txt")
   * define constants
