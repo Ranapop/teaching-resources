@@ -1,4 +1,4 @@
-Note: ex-officio 2p
+Note: ex-officio 1p
 
 # 1) Read an array of words from a file (2p)
 
