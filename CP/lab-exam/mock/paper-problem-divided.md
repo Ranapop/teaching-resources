@@ -1,3 +1,5 @@
+Note: ex-officio 2p
+
 # 1) Read an array of words from a file (2p)
 
 You have to implement a function with the following header:
@@ -105,7 +107,7 @@ Your answer:
 
 ````
 
-# 4) Count vowels of words in a file (1p)
+# 4) Count vowels of words in a file (4p)
 
 ## Input
 
