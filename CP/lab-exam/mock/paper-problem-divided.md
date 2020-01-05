@@ -1,6 +1,6 @@
 Note: ex-officio 1p
 
-# 1) Read an array of words from a file (2p)
+# 1) Read an array of words from a file (2.5p)
 
 You have to implement a function with the following header:
 ```c
