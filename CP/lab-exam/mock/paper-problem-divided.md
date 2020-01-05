@@ -57,7 +57,7 @@ void freeMemory(char ** words, int n) {
 }
 ```
 
-# 3) Count vowels iteratively (1p)
+# 3) Count vowels iteratively (1.5p)
 
 You have to write a function for counting the number of vowels in a word. You may assume you have a function that tells you if a given character is a vowel or not:
 ```c
@@ -160,3 +160,7 @@ int main() {
 
 }
 ```
+## Grading
+* opening file: 1.5
+* main flow (read, process, output): 2
+* cleaning up (free memory, close file): 0.5
