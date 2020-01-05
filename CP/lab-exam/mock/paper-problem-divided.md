@@ -1,4 +1,5 @@
 Note: ex-officio 1p
+Maximum grade: 11p
 
 # 1) Read an array of words from a file (2.5p)
 
