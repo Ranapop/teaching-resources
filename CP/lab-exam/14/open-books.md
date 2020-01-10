@@ -170,6 +170,7 @@ Maximum number of characters in strings:
 ```
 
 Example
+```
 3
 1970 1980 1990
 9 9.5 10
