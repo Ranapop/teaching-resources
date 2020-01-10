@@ -157,7 +157,7 @@ File format:
 You should dynamically allocate the array. You can consider the strings are <20 chars.
 
 ```c
-#define MAX_TITLE 20
+#define MAX_NAME 20
 #define MAX_AWARD 20
 ```
 
