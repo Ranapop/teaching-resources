@@ -166,7 +166,7 @@ File format:
 Maximum number of characters in strings:
 ```c
 #define MAX_TITLE 20
-#define MAX_DIRECTOR_NAME
+#define MAX_DIRECTOR_NAME 20
 ```
 
 Example
