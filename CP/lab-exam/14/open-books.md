@@ -162,8 +162,9 @@ Maximum number of characters in strings:
 ```c
 #define MAX_TITLE 20
 #define MAX_DIRECTOR_NAME
-Example
 ```
+
+Example
 3
 1970 1980 1990
 9 9.5 10
