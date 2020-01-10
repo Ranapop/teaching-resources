@@ -154,6 +154,13 @@ File format:
 * fourth line: names (n words, can consider each name does not contain spaces)
 * fifth line: awards (n words, can consider each award does not contain spaces)
 
+You should dynamically allocate the array. You can consider the strings are <20 chars.
+
+```c
+#define MAX_TITLE 20
+#define MAX_AWARD 20
+```
+
 Example
 ```
 3
