@@ -125,6 +125,11 @@ Task4:
 Best movie of the year 1970 is "Best movie of 1970"
 ```
 
+If no movie was made in that year (say 2003), output:
+```
+Task4:
+No movie made in 2003
+```
 
 # Output file after tasks 1-4
 ```
