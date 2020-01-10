@@ -103,6 +103,7 @@ The movies for director hitchcock are:
 Not quite best movie of 1970
 another h movie
 ```
+For a smaller grade (0.5p), you can print the movie titles of the first director (in case you could not complete task2).
 
 # Task 4) Get best movie of a given year (2p)
 
