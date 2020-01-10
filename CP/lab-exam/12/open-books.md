@@ -123,6 +123,11 @@ Task4:
 Youngest actor who played in at least 2 movies is Elsa
 ```
 
+You can consider the max age is 150
+```c
+#define MAX_AGE 150
+```
+
 # Output file after tasks 1-4
 ```
 Task1:
