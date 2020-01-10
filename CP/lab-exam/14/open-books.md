@@ -58,7 +58,7 @@ movie * getDummyMovies(int * n) {
 You should print in `../out.txt` the movies in the format:
 
 ```c
-"Movie %s from year %d, directed by %s, rated at %.2lf\n"
+"Movie \"%s\" from year %d, directed by %s, rated at %.2lf\n"
 ```
 
 Print for this task:
@@ -158,6 +158,10 @@ File format:
 * fourth line: titles (n words, can consider each title does not contain spaces)
 * fifth line: directors (n words, can consider each director does not contain spaces)
 
+Maximum number of characters in strings:
+```c
+#define MAX_TITLE 20
+#define MAX_DIRECTOR_NAME
 Example
 ```
 3
